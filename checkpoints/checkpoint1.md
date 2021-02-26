@@ -13,6 +13,7 @@ The demand for interactive learning tools is at an all time high. Now more than 
 ## Deliverables
 
 ## End Goals
+By the end of this project, we hope to have a jar executable file that runs a text adventure game aimed at teaching the user how to use basic terminal commands. The user will have an introduction to the commands and be launched into a step-by-step text adventure in which they will have to solve the murder mystery by finding clues located in different files that must be accessed by using the correct terminal commands. We hope to create an engaging and effective learning tool that can aid in the users’ understanding of how to use terminal commands and gain confidence in their new skills.  
 
 ## Resources
 
