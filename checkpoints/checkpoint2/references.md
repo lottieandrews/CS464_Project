@@ -31,21 +31,28 @@ Learning About Terminal Command Line Interfaces](http://web.mit.edu/mprat/Public
 <br> Conference paper describing an approach to educational game design using metaphorical worlds, and examples of educational games designed to teach the inner workings of the Java Virtual Machine.
 
 - [RoboTIC: A serious game based on augmented reality for learning programming](https://link-springer-com.ezproxy2.library.colostate.edu/article/10.1007/s11042-020-09202-z)
+<br> Effects of serious games on learning on youth program children's motivation and interest in programming. Article shows promising results.
 
 - [Serious Video Game Effectiveness](https://dl-acm-org.ezproxy2.library.colostate.edu/doi/10.1145/1255047.1255057)
+<br> Experiment on college students investigates effects of interactivity on science learning.
 
 - [Programming in game space: how to represent parallel programming concepts in an educational game](https://dl-acm-org.ezproxy2.library.colostate.edu/doi/10.1145/3337722.3337749)
+<br> Serious game aims to aid in parallel programming learning, conducted on undergrad students taking a parallel programming class concurrently.
 
 - [A review of games designed to improve introductory computer programming competencies](https://ieeexplore-ieee-org.ezproxy2.library.colostate.edu/document/7044114)
+<br> 40 different games teaching intro computer programming used in experiment, each highlighting different skills and topics
 
 - [Experimental Evaluation of an Educational Game for
 Improved Learning in Introductory Computing](https://dl-acm-org.ezproxy2.library.colostate.edu/doi/10.1145/1508865.1508980)
+<br> Game developed to improve understanding in introductory CS classes compared with traditional learning. Game gives immediate feedback and a safe coding environment.
 
 - [Experimental Evaluation of Teaching Recursion in a Video Game](https://dl-acm-org.ezproxy2.library.colostate.edu/doi/10.1145/1581073.1581086)
+<br> Novel game developed to teach recursion, results indicate increased enthusiasm among those who played the game.
 
 - [Digital game-based learning](https://dl-acm-org.ezproxy2.library.colostate.edu/doi/10.1145/950566.950596)
+<br> Playing action video games has the positive effect of enhancing students' visual selective attention.
 
 - [Learning IS Child’s Play: Game-Based Learning in Computer Science Education](https://dl-acm-org.ezproxy2.library.colostate.edu/doi/10.1145/3282844)
-
+<br> Focused on using traditional game design to improve student engagement in higher education computer science concepts.
 
 
