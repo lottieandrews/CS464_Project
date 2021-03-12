@@ -40,7 +40,7 @@ Learning About Terminal Command Line Interfaces](http://web.mit.edu/mprat/Public
 <br> Serious game aims to aid in parallel programming learning, conducted on undergrad students taking a parallel programming class concurrently.
 
 - [A review of games designed to improve introductory computer programming competencies](https://ieeexplore-ieee-org.ezproxy2.library.colostate.edu/document/7044114)
-<br> 40 different games teaching intro computer programming used in experiment, each highlighting different skills and topics
+<br> 40 different games teaching intro computer programming used in experiment, each highlighting different skills and topics.
 
 - [Experimental Evaluation of an Educational Game for
 Improved Learning in Introductory Computing](https://dl-acm-org.ezproxy2.library.colostate.edu/doi/10.1145/1508865.1508980)
