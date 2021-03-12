@@ -7,7 +7,7 @@ Learning About Terminal Command Line Interfaces](http://web.mit.edu/mprat/Public
 <br> Discusses the learning model behind game-based learning and provides a theoretical framework for educational game design.
 
 - [Do Computer-Based Games Facilitate Knowledge Acquisition and Retention?](https://colostate.primo.exlibrisgroup.com/discovery/fulldisplay?docid=cdi_apa_psycarticlescurrent_mil_8_4_295&context=PC&vid=01COLSU_INST:01COLSU&lang=en&search_scope=MyCampus_FC_CI_PU_P&adaptor=Primo%20Central&tab=Everything&query=any,contains,Do%20Computer-Based%20Games%20Facilitate%20Knowledge%20Acquisition%20and%20Retention%3F&offset=0)
-<br> Study comparing knowledge acquisition and retention in military trainees when presented with subject matter via a paper-based reading vs. a computer game
+<br> Study comparing knowledge acquisition and retention in military trainees when presented with subject matter via a paper-based reading vs. a computer game.
 
 - [Digital Game-Based Learning in high school Computer Science education: Impact on educational effectiveness and student motivation](https://www.sciencedirect.com/science/article/abs/pii/S0360131508000845) 
 <br> Study comparing learning effectiveness and motivation in high school CS students when presented with subject matter via a non-game computer application vs. a computer game.
