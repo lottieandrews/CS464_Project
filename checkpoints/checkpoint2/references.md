@@ -55,4 +55,10 @@ Improved Learning in Introductory Computing](https://dl-acm-org.ezproxy2.library
 - [Learning IS Child’s Play: Game-Based Learning in Computer Science Education](https://dl-acm-org.ezproxy2.library.colostate.edu/doi/10.1145/3282844)
 <br> Focused on using traditional game design to improve student engagement in higher education computer science concepts.
 
+- [Unix Literacy for First-Year Computer Science Students](https://dl-acm-org.ezproxy2.library.colostate.edu/doi/10.1145/2910925.2910930)
+<br> Study conducts a six hour self paced course for students to learn the command line, this type of teaching is in contrast to what we will attempt to achieve.
+
+- [Comparing mental models of novice programmers when using visual and command line environments](https://dl-acm-org.ezproxy2.library.colostate.edu/doi/10.1145/2184512.2184546)
+<br> Study comparing visual environments (IDEs etc.) vs command line environments and their subsequent understanding of programming, study brings up the point that many programs opt for visual environments for beginner programmers.
+
 
