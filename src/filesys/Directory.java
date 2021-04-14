@@ -4,24 +4,26 @@ import java.util.*;
 
 public class Directory extends File {
 
-    private ArrayList<Node> children;
+    private TreeMap<String, File> children;
 
     public Directory() {
         super();
-        this.children = new ArrayList<Node>();
+        this.children = new TreeMap<String, File>();
     }
 
     public Directory(String name) {
         super(name);
-        this.children = new ArrayList<Node>();
+        this.children = new TreeMap<String, File>();
     }
 
-    public void addChild(Node child) {
+    @Override
+    public void addChild(File child) {
         child.setParent(this);
-        children.add(child);
+        children.put(child.getName(), child);
     }
 
-    public ArrayList<Node> getChildren() {
+    @Override
+    public TreeMap<String, File> getChildren() {
         return children;
     }
 }

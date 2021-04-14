@@ -10,13 +10,17 @@ public class FileNavigator {
     }
 
     public static void ls() {
-        for (Node item : currentDir.getChildren()) {
-            System.out.println(item.getName());
+        for (String fileName : currentDir.getChildren().keySet()) {
+            System.out.println(fileName);
         }
     }
 
     public static void less(File file) {
         System.out.println(file.getFileText());
+    }
+
+    private static void errorHandler(Exception e) {
+        System.err.println(e.getMessage());
     }
 
     public static void main(String[] args) {
@@ -28,7 +32,17 @@ public class FileNavigator {
         ROOT_DIR.addChild(folder1);
         ROOT_DIR.addChild(folder2);
         ROOT_DIR.addChild(folder3);
-        //System.out.println(folder.getParentName() + "/" + folder.getName());
+        File file1 = new File("File1", "This is a file.");
+        file1.setFileText("This is a file. It contains text.");
+        ROOT_DIR.addChild(file1);
         ls();
+        try {
+            file1.getChildren();
+        } catch (Exception e) {
+            errorHandler(e);
+        }
+        //System.out.println((ROOT_DIR.getChildren().get("File1")).getFileText());
+        //System.out.println(folder.getParentName() + "/" + folder.getName());
+
     }
 }
