@@ -4,6 +4,10 @@ public class Node {
     private Directory parent = null;
     private String name;
 
+    public Node() {
+        this.name = "Untitled";
+    }
+
     public Node(String name) {
         this.name = name;
     }

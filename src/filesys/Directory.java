@@ -2,9 +2,14 @@ package filesys;
 
 import java.util.*;
 
-public class Directory extends Node {
+public class Directory extends File {
 
     private ArrayList<Node> children;
+
+    public Directory() {
+        super();
+        this.children = new ArrayList<Node>();
+    }
 
     public Directory(String name) {
         super(name);

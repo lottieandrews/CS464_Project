@@ -4,6 +4,9 @@ public class File extends Node {
 
     private String fileText = "";
 
+    public File() {
+        super();
+    }
     public File(String name) {
         super(name);
     }
