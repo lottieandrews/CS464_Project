@@ -13,7 +13,6 @@ public class Tutorial {
         Directory folder = new Directory("Folder");
         root.addChild(folder);
         System.out.println(folder.getParentName() + "/" + folder.getName());
-        System.out.println(root.getChildren().toString());
     }
 
 }

@@ -2,26 +2,44 @@ package filesys;
 
 import java.util.*;
 
-public class Directory extends File {
+public class Directory extends Node {
 
-    private ArrayList<Node> children;
+        private TreeMap<String, File> files;
+        private TreeMap<String, Directory> subDirs;
 
     public Directory() {
         super();
-        this.children = new ArrayList<Node>();
+        this.files = new TreeMap<String, File>();
+        this.subDirs = new TreeMap<String, Directory>();
     }
 
     public Directory(String name) {
         super(name);
-        this.children = new ArrayList<Node>();
+        this.files = new TreeMap<String, File>();
+        this.subDirs = new TreeMap<String, Directory>();
     }
 
-    public void addChild(Node child) {
+    public Directory(String name, Directory parent) {
+        super(name, parent);
+        this.files = new TreeMap<String, File>();
+        this.subDirs = new TreeMap<String, Directory>();
+    }
+
+    public void addChild(Directory child) {
         child.setParent(this);
-        children.add(child);
+        subDirs.put(child.getName(), child);
     }
 
-    public ArrayList<Node> getChildren() {
-        return children;
+    public void addChild(File child) {
+        child.setParent(this);
+        files.put(child.getName(), child);
+    }
+
+    public TreeMap<String, File> getFiles() {
+        return files;
+    }
+
+    public TreeMap<String, Directory> getSubDirs() {
+        return subDirs;
     }
 }

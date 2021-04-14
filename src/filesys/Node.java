@@ -12,6 +12,11 @@ public class Node {
         this.name = name;
     }
 
+    public Node(String name, Directory parent) {
+        this.name = name;
+        this.parent = parent;
+    }
+
     public Directory getParent() {
         return parent;
     }

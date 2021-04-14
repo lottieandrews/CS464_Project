@@ -11,6 +11,10 @@ public class File extends Node {
         super(name);
     }
 
+    public File(String name, Directory parent) {
+        super(name, parent);
+    }
+
     public File(String name, String fileText) {
         super(name);
         this.fileText = fileText;
