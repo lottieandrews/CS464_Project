@@ -28,6 +28,8 @@ public class Node {
         return parent.getName();
     }
 
+    // This method is just here so the ArrayList.toString() method will work for print debugging
+    // the Directory subclass. Use getName() instead.
     public String toString() {
         return name;
     }
