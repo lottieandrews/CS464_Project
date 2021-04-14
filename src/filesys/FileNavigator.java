@@ -15,6 +15,10 @@ public class FileNavigator {
         }
     }
 
+    public static void less(File file) {
+        System.out.println(file.getFileText());
+    }
+
     public static void main(String[] args) {
         ROOT_DIR.setName("Start");
         pwd();
