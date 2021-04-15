@@ -1,5 +1,5 @@
 package filesys;
-import java.io.*;
+import java.util.Arrays;
 
 public class FileNavigator {
 
@@ -11,13 +11,13 @@ public class FileNavigator {
     }
 
     public static void cd(String dirName) {
-        if (validateName(dirName, "Directory")) {
+        if (validateName(dirName, new String[]{"Directory"})) {
             currentDir = currentDir.getSubDirs().get(dirName);
         }
     }
 
     public static void less(String fileName) {
-        if (validateName(fileName, "File")) {
+        if (validateName(fileName, new String[]{"File"})) {
             System.out.println(currentDir.getFiles().get(fileName).getFileText());
         }
     }
@@ -32,7 +32,12 @@ public class FileNavigator {
     }
 
     public static void mkdir(String dirName) {
-        currentDir.addChild(new Directory(dirName));
+        if (getType(dirName) != null) {
+            printError(dirName + ": File already exists");
+        }
+        else {
+            currentDir.addChild(new Directory(dirName));
+        }
     }
 
     public static void pwd() {
@@ -40,55 +45,69 @@ public class FileNavigator {
     }
 
     public static void rm(String fileName) {
-        if(validateName(fileName, "File")) {
+        if(validateName(fileName, new String[]{"File"})) {
             currentDir.remove(fileName);
         }
     }
 
-    private static boolean validateName(String name, String validType) {
+    private static String getType(String name) {
         if (currentDir.getSubDirs().get(name) != null) {
-            if (validType == "Directory") {
-                return true;
-            }
-            errorHandler(new IOException(name + " is a directory"));
+            return "Directory";
         }
         else if (currentDir.getFiles().get(name) != null) {
-            if (validType == "File") {
-                return true;
-            }
-            errorHandler(new IOException(name + " is not a directory"));
+            return "File";
         }
         else {
-            errorHandler(new FileNotFoundException(name + ": No such file or directory"));
+            return null;
+        }
+    }
+
+    private static boolean validateName(String name, String[] validTypes) {
+        if (getType(name) == "Directory") {
+            if (Arrays.asList(validTypes).contains("Directory")) {
+                return true;
+            }
+            printError(name + " is a directory");
+        }
+        else if (getType(name) == "File") {
+            if (Arrays.asList(validTypes).contains("File")) {
+                return true;
+            }
+            printError(name + ": Not a directory");
+        }
+        else {
+            printError(name + ": No such file or directory");
         }
         return false;
     }
 
-    private static void errorHandler(Exception e) {
-        System.err.println(e.getMessage());
+    private static void printError(String errorMessage) {
+        System.err.println(errorMessage);
     }
 
     public static void main(String[] args) {
         ROOT_DIR.setName("Start");
-        //pwd();
+        pwd();
         Directory folder1 = new Directory("Folder1");
         Directory folder2 = new Directory("Folder2");
         Directory folder3 = new Directory("Folder3");
         ROOT_DIR.addChild(folder1);
         ROOT_DIR.addChild(folder2);
         ROOT_DIR.addChild(folder3);
-        //System.out.println(folder.getParentName() + "/" + folder.getName());
+        System.out.println(folder1.getParentName() + "/" + folder1.getName());
         File file1 = new File("File1", "This is a file.");
         file1.setFileText("This is a file. It contains text.");
         ROOT_DIR.addChild(file1);
-        //less("Folder2");
-        //less("File1");
-        //System.out.println("Before:");
-        //ls();
-        //rm("File1");
-        //System.out.println("After:");
-        //ls();
-        //cd("Folder2");
+        less("Folder2");
+        less("File1");
+        System.out.println("Before:");
+        ls();
+        rm("File1");
+        System.out.println("After:");
+        ls();
+        cd("Folder2");
         pwd();
+        cd();
+        mkdir("Folder1");
     }
 }

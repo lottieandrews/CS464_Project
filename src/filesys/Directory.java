@@ -2,7 +2,7 @@ package filesys;
 
 import java.util.*;
 
-public class Directory extends Node {
+public class Directory extends File {
 
         private TreeMap<String, File> files;
         private TreeMap<String, Directory> subDirs;
