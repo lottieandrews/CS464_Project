@@ -1,6 +1,5 @@
 package filesys;
-
-import java.io.IOException;
+import java.io.*;
 
 public class FileNavigator {
 
@@ -21,26 +20,34 @@ public class FileNavigator {
     }
 
     public static void less(String fileName) {
-        if (currentDir.getFiles().get(fileName) != null) {
+        if (validateFileName(fileName, "File")) {
             System.out.println(currentDir.getFiles().get(fileName).getFileText());
-        }
-        else if (currentDir.getSubDirs().get(fileName) != null) {
-            errorHandler(new IOException(fileName + " is a directory"));
-        }
-        else {
-            errorHandler(new NullPointerException(fileName + ": No such file or directory"));
         }
     }
 
     public static void rm(String fileName) {
-        if (currentDir.remove(fileName) == null) {
-            if (currentDir.getSubDirs().get(fileName) != null) {
-                errorHandler(new IOException(fileName + " is a directory"));
-            }
-            else {
-                errorHandler(new NullPointerException(fileName + ": No such file or directory"));
-            }
+        if(validateFileName(fileName, "File")) {
+            currentDir.remove(fileName);
         }
+    }
+
+    private static boolean validateFileName(String fileName, String validType) {
+        if (currentDir.getSubDirs().get(fileName) != null) {
+            if (validType == "Directory") {
+                return true;
+            }
+            errorHandler(new IOException(fileName + " is a directory"));
+        }
+        else if (currentDir.getFiles().get(fileName) != null) {
+            if (validType == "File") {
+                return true;
+            }
+            errorHandler(new IOException(fileName + " is not a directory"));
+        }
+        else {
+            errorHandler(new FileNotFoundException(fileName + ": No such file or directory"));
+        }
+        return false;
     }
 
     private static void errorHandler(Exception e) {
@@ -60,9 +67,8 @@ public class FileNavigator {
         File file1 = new File("File1", "This is a file.");
         file1.setFileText("This is a file. It contains text.");
         ROOT_DIR.addChild(file1);
-        //ls();
-        //less("Folder2");
-        //less("File1");
+        less("Folder2");
+        less("File1");
         System.out.println("Before:");
         ls();
         rm("File1");
