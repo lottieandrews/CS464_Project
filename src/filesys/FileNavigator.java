@@ -77,12 +77,14 @@ public class FileNavigator {
         File file1 = new File("File1", "This is a file.");
         file1.setFileText("This is a file. It contains text.");
         ROOT_DIR.addChild(file1);
-        less("Folder2");
-        less("File1");
-        System.out.println("Before:");
-        ls();
-        rm("File1");
-        System.out.println("After:");
-        ls();
+        //less("Folder2");
+        //less("File1");
+        //System.out.println("Before:");
+        //ls();
+        //rm("File1");
+        //System.out.println("After:");
+        //ls();
+        //cd("Folder2");
+        pwd();
     }
 }
