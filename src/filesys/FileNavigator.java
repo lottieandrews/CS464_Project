@@ -43,20 +43,26 @@ public class FileNavigator {
     public static void mv(String name1, String name2) {
         if (validateName(name1, new String[]{"File", "Directory"})) {
             if (getType(name1) == "Directory") {
-                if (getType(name2) == "Directory") {
-                    currentDir.getSubDir(name2).addChild(currentDir.getSubDir(name1));
+                if (getType(name2) == "File") {
+                    printError("Rename " + name1 + " to " + name2 + ": " + name2 + " is not a directory");
                 }
                 else {
-                    printError("Rename " + name1 + " to " + name2 + ": " + name2 + " is not a directory");
+                    if (getType(name2) == null) {
+                        currentDir.addChild(new Directory(name2));
+                    }
+                    currentDir.getSubDir(name2).addChild(currentDir.getSubDir(name1));
                 }
             }
             else if (getType(name1) == "File") {
-                if (getType(name2) == "Directory") {    //We may want to ask the user if they want to override the contents of the destination file inside this if statement.
-                    currentDir.getSubDir(name2).addChild(currentDir.getFile(name1));
-                }
-                else {
+                if (getType(name2) == "File") { //We may want to ask the user if they want to override the contents of the destination file inside this statement.
                     currentDir.remove(name2);
                     currentDir.getFile(name1).setName(name2);
+                }
+                else {
+                    if (getType(name2) == null) {
+                        currentDir.addChild(new File(name2));
+                    }
+                    currentDir.getSubDir(name2).addChild(currentDir.getFile(name1));
                 }
             }
         }

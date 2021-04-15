@@ -36,8 +36,9 @@ public class Directory extends File {
         files.put(child.getName(), child);
     }
 
-    public File remove(String fileName) {
-        return files.remove(fileName);
+    public void remove(String fileName) {
+        files.remove(fileName);
+        subDirs.remove(fileName);
     }
 
     public TreeMap<String, File> getFileList() {
