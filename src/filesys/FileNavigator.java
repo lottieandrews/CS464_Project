@@ -32,6 +32,17 @@ public class FileNavigator {
         }
     }
 
+    public static void rm(String fileName) {
+        if (currentDir.remove(fileName) == null) {
+            if (currentDir.getSubDirs().get(fileName) != null) {
+                errorHandler(new IOException(fileName + " is a directory"));
+            }
+            else {
+                errorHandler(new NullPointerException(fileName + ": No such file or directory"));
+            }
+        }
+    }
+
     private static void errorHandler(Exception e) {
         System.err.println(e.getMessage());
     }
@@ -50,7 +61,12 @@ public class FileNavigator {
         file1.setFileText("This is a file. It contains text.");
         ROOT_DIR.addChild(file1);
         //ls();
-        less("Folder2");
-        less("File1");
+        //less("Folder2");
+        //less("File1");
+        System.out.println("Before:");
+        ls();
+        rm("File1");
+        System.out.println("After:");
+        ls();
     }
 }

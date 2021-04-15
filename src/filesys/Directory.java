@@ -35,6 +35,10 @@ public class Directory extends Node {
         files.put(child.getName(), child);
     }
 
+    public File remove(String fileName) {
+        return files.remove(fileName);
+    }
+
     public TreeMap<String, File> getFiles() {
         return files;
     }
