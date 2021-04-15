@@ -40,23 +40,19 @@ public class Directory extends File {
         return files.remove(fileName);
     }
 
-    public TreeMap<String, File> getFiles() {
+    public TreeMap<String, File> getFileList() {
         return files;
     }
 
-    public TreeMap<String, Directory> getSubDirs() {
+    public TreeMap<String, Directory> getSubDirList() {
         return subDirs;
     }
 
-    public Node getChild(String name) throws FileNotFoundException {
-        if (getSubDirs().get(name) != null) {
-            return getSubDirs().get(name);
-        }
-        else if (getFiles().get(name) != null) {
-            return getFiles().get(name);
-        }
-        else {
-            throw new FileNotFoundException(name + ": No such file or directory");
-        }
+    public File getFile(String fileName) {
+        return files.get(fileName);
+    }
+
+    public Directory getSubDir(String dirName) {
+        return subDirs.get(dirName);
     }
 }

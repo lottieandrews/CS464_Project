@@ -1,5 +1,4 @@
 package filesys;
-import java.io.FileNotFoundException;
 import java.util.Arrays;
 
 public class FileNavigator {
@@ -13,21 +12,21 @@ public class FileNavigator {
 
     public static void cd(String dirName) {
         if (validateName(dirName, new String[]{"Directory"})) {
-            currentDir = currentDir.getSubDirs().get(dirName);
+            currentDir = currentDir.getSubDir(dirName);
         }
     }
 
     public static void less(String fileName) {
         if (validateName(fileName, new String[]{"File"})) {
-            System.out.println(currentDir.getFiles().get(fileName).getFileText());
+            System.out.println(currentDir.getFile(fileName).getFileText());
         }
     }
 
     public static void ls() {
-        for (Directory dir : currentDir.getSubDirs().values()) {
+        for (Directory dir : currentDir.getSubDirList().values()) {
             System.out.println(dir.getName());
         }
-        for (File file : currentDir.getFiles().values()) {
+        for (File file : currentDir.getFileList().values()) {
             System.out.println(file.getName());
         }
     }
@@ -43,20 +42,22 @@ public class FileNavigator {
 
     public static void mv(String name1, String name2) {
         if (validateName(name1, new String[]{"File", "Directory"})) {
-            if (getType(name1) == "Directory" && getType(name2) == "File") {
-                printError("Rename " + name1 + " to " + name2 + ": " + name2 + " is not a directory");
-            }
-            else if (getType(name1) == "File" && getType(name2) == "File") {    //We may want to ask the user if they want to override the contents of the destination file inside this if statement.
-                currentDir.remove(name2);
-                currentDir.getFiles().get(name1).setName(name2);
-            }
-            else { /*
-                try {
-                    currentDir.getChild(name2).addChild(name1);
-                } catch (FileNotFoundException e) { // This is required to be here but should never happen
-                    printError(e.getMessage());
+            if (getType(name1) == "Directory") {
+                if (getType(name2) == "Directory") {
+                    currentDir.getSubDir(name2).addChild(currentDir.getSubDir(name1));
                 }
-                */
+                else {
+                    printError("Rename " + name1 + " to " + name2 + ": " + name2 + " is not a directory");
+                }
+            }
+            else if (getType(name1) == "File") {
+                if (getType(name2) == "Directory") {    //We may want to ask the user if they want to override the contents of the destination file inside this if statement.
+                    currentDir.getSubDir(name2).addChild(currentDir.getFile(name1));
+                }
+                else {
+                    currentDir.remove(name2);
+                    currentDir.getFile(name1).setName(name2);
+                }
             }
         }
     }
@@ -72,10 +73,10 @@ public class FileNavigator {
     }
 
     private static String getType(String name) {
-        if (currentDir.getSubDirs().get(name) != null) {
+        if (currentDir.getSubDir(name) != null) {
             return "Directory";
         }
-        else if (currentDir.getFiles().get(name) != null) {
+        else if (currentDir.getFile(name) != null) {
             return "File";
         }
         else {
@@ -131,10 +132,5 @@ public class FileNavigator {
         pwd();
         cd();
         mkdir("Folder1");
-        try {
-            System.out.println(ROOT_DIR.getChild("Folder1").getClass().getSimpleName());
-        } catch (Exception e) {
-
-        }
     }
 }
