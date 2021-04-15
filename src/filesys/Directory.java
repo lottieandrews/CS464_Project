@@ -1,5 +1,6 @@
 package filesys;
 
+import java.io.FileNotFoundException;
 import java.util.*;
 
 public class Directory extends File {
@@ -45,5 +46,17 @@ public class Directory extends File {
 
     public TreeMap<String, Directory> getSubDirs() {
         return subDirs;
+    }
+
+    public Node getChild(String name) throws FileNotFoundException {
+        if (getSubDirs().get(name) != null) {
+            return getSubDirs().get(name);
+        }
+        else if (getFiles().get(name) != null) {
+            return getFiles().get(name);
+        }
+        else {
+            throw new FileNotFoundException(name + ": No such file or directory");
+        }
     }
 }
