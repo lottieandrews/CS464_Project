@@ -6,6 +6,10 @@ public class FileNavigator {
     public static final Directory ROOT_DIR = new Directory();
     public static Directory currentDir = ROOT_DIR;
 
+    public static void cd() {
+        currentDir = ROOT_DIR;
+    }
+
     public static void cd(String dirName) {
         if (validateName(dirName, "Directory")) {
             currentDir = currentDir.getSubDirs().get(dirName);
