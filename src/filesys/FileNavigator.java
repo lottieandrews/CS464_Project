@@ -27,10 +27,13 @@ public class FileNavigator {
         }
     }
 
+    public static void mkdir(String dirName) {
+        currentDir.addChild(new Directory(dirName));
+    }
+
     public static void pwd() {
         System.out.println(currentDir.getName());
     }
-
 
     public static void rm(String fileName) {
         if(validateFileName(fileName, "File")) {
