@@ -6,8 +6,10 @@ public class FileNavigator {
     public static final Directory ROOT_DIR = new Directory();
     public static Directory currentDir = ROOT_DIR;
 
-    public static void pwd() {
-        System.out.println(currentDir.getName());
+    public static void less(String fileName) {
+        if (validateFileName(fileName, "File")) {
+            System.out.println(currentDir.getFiles().get(fileName).getFileText());
+        }
     }
 
     public static void ls() {
@@ -19,11 +21,10 @@ public class FileNavigator {
         }
     }
 
-    public static void less(String fileName) {
-        if (validateFileName(fileName, "File")) {
-            System.out.println(currentDir.getFiles().get(fileName).getFileText());
-        }
+    public static void pwd() {
+        System.out.println(currentDir.getName());
     }
+
 
     public static void rm(String fileName) {
         if(validateFileName(fileName, "File")) {
