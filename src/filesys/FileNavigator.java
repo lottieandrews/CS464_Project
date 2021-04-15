@@ -7,13 +7,13 @@ public class FileNavigator {
     public static Directory currentDir = ROOT_DIR;
 
     public static void cd(String dirName) {
-        if (validateFileName(dirName, "Directory")) {
+        if (validateName(dirName, "Directory")) {
             currentDir = currentDir.getSubDirs().get(dirName);
         }
     }
 
     public static void less(String fileName) {
-        if (validateFileName(fileName, "File")) {
+        if (validateName(fileName, "File")) {
             System.out.println(currentDir.getFiles().get(fileName).getFileText());
         }
     }
@@ -36,26 +36,26 @@ public class FileNavigator {
     }
 
     public static void rm(String fileName) {
-        if(validateFileName(fileName, "File")) {
+        if(validateName(fileName, "File")) {
             currentDir.remove(fileName);
         }
     }
 
-    private static boolean validateFileName(String fileName, String validType) {
-        if (currentDir.getSubDirs().get(fileName) != null) {
+    private static boolean validateName(String name, String validType) {
+        if (currentDir.getSubDirs().get(name) != null) {
             if (validType == "Directory") {
                 return true;
             }
-            errorHandler(new IOException(fileName + " is a directory"));
+            errorHandler(new IOException(name + " is a directory"));
         }
-        else if (currentDir.getFiles().get(fileName) != null) {
+        else if (currentDir.getFiles().get(name) != null) {
             if (validType == "File") {
                 return true;
             }
-            errorHandler(new IOException(fileName + " is not a directory"));
+            errorHandler(new IOException(name + " is not a directory"));
         }
         else {
-            errorHandler(new FileNotFoundException(fileName + ": No such file or directory"));
+            errorHandler(new FileNotFoundException(name + ": No such file or directory"));
         }
         return false;
     }
