@@ -1,5 +1,6 @@
 package filesys;
 import java.util.Arrays;
+import java.util.List;
 
 public class FileNavigator {
 
@@ -13,6 +14,16 @@ public class FileNavigator {
     public static void cd(String dirName) {
         if (validateName(dirName, new String[]{"Directory"})) {
             currentDir = currentDir.getSubDir(dirName);
+        }
+    }
+
+    public static void diff(String name1, String name2) {
+        if (getType(name1) == "Directory" && getType(name2) == "Directory") {
+            printError("Comparing two directories works in the real world, but not in this program!");
+        }
+        if (validateName(name1, new String[]{"File"}) && validateName(name2, new String[]{"File"})) {
+            List<String> file1 = Arrays.asList(getLines(name1));
+            List<String> file2 = Arrays.asList(getLines(name2));
         }
     }
 
