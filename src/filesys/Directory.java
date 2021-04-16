@@ -1,6 +1,5 @@
 package filesys;
 
-import java.io.FileNotFoundException;
 import java.util.*;
 
 public class Directory extends File {

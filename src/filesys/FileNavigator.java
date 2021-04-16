@@ -16,6 +16,17 @@ public class FileNavigator {
         }
     }
 
+    public static void grep(String word, String fileName) {
+        if (validateName(fileName, new String[]{"File"})) {
+            String[] fileText = getLines(currentDir.getFile(fileName).getFileText());
+            for (String line : fileText) {
+                if (line.contains(word)) {
+                    System.out.println(line);
+                }
+            }
+        }
+    }
+
     public static void less(String fileName) {
         if (validateName(fileName, new String[]{"File"})) {
             System.out.println(currentDir.getFile(fileName).getFileText());
@@ -76,6 +87,10 @@ public class FileNavigator {
         if(validateName(fileName, new String[]{"File"})) {
             currentDir.remove(fileName);
         }
+    }
+
+    private static String[] getLines(String fileText) {
+        return fileText.split("\n");
     }
 
     private static String getType(String name) {
