@@ -19,20 +19,8 @@ public class Directory extends Node {
         this.subDirs = new TreeMap<String, Directory>();
     }
 
-    public Directory(Directory parent, String name) {
-        super(parent, name);
-        this.files = new TreeMap<String, File>();
-        this.subDirs = new TreeMap<String, Directory>();
-    }
-
     public Directory(String name, String fileText) {
         super(name, fileText);
-        this.files = new TreeMap<String, File>();
-        this.subDirs = new TreeMap<String, Directory>();
-    }
-
-    public Directory(Directory parent, String name, String fileText) {
-        super(parent, name, fileText);
         this.files = new TreeMap<String, File>();
         this.subDirs = new TreeMap<String, Directory>();
     }

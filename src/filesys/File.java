@@ -11,15 +11,7 @@ public class File extends Node {
         super(name);
     }
 
-    public File(Directory parent, String name) {
-        super(parent, name);
-    }
-
     public File(String name, String fileText) {
         super(name, fileText);
-    }
-
-    public File(Directory parent, String name, String fileText) {
-        super(parent, name, fileText);
     }
 }

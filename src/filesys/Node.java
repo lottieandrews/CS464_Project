@@ -18,17 +18,6 @@ public class Node {
         this.fileText = fileText;
     }
 
-    public Node(Directory parent, String name) {
-        this.parent = parent;
-        this.name = name;
-    }
-
-    public Node(Directory parent, String name, String fileText) {
-        this.parent = parent;
-        this.name = name;
-        this.fileText = fileText;
-    }
-
     public Directory getParent() {
         return parent;
     }
