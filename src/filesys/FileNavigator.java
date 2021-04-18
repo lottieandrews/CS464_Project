@@ -90,6 +90,10 @@ public class FileNavigator {
         }
     }
 
+    private static String[] getLines(String fileText) {
+        return fileText.split("\n");
+    }
+
     private static String getType(String name) {
         if (currentDir.getSubDir(name) != null) {
             return "Directory";
