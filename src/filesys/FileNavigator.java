@@ -2,10 +2,15 @@ package filesys;
 import java.util.Arrays;
 import java.util.List;
 
-public class FileNavigator {
+public abstract class FileNavigator {
 
     private final Directory ROOT_DIR;
     private Directory currentDir;
+
+    public FileNavigator() {
+        this.ROOT_DIR = new Directory();
+        this.currentDir = this.ROOT_DIR;
+    }
 
     public FileNavigator(Directory ROOT_DIR) {
         this.ROOT_DIR = ROOT_DIR;
@@ -132,11 +137,5 @@ public class FileNavigator {
 
     private void printError(String errorMessage) {
         System.err.println(errorMessage);
-    }
-
-    public static void main(String[] args) {
-        Directory folder = new Directory("Untitled Folder");
-        FileNavigator fn = new FileNavigator(folder);
-        fn.pwd();
     }
 }
