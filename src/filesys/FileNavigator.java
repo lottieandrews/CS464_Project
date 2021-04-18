@@ -17,6 +17,10 @@ public abstract class FileNavigator {
         this.currentDir = ROOT_DIR;
     }
 
+    public String getCurrentDirName() {
+        return currentDir.getName();
+    }
+
     public void cd() {
         currentDir = ROOT_DIR;
     }
@@ -38,7 +42,7 @@ public abstract class FileNavigator {
         }
     }
 
-    public void less(String fileName) {
+    public void cat(String fileName) {
         if (validateName(fileName, new String[]{"File"})) {
             System.out.println(currentDir.getFile(fileName).getFileText());
         }
