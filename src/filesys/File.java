@@ -1,30 +1,25 @@
 package filesys;
 
+//This class is exactly the same as Node. The only difference is that Directory extends Node and not File.
 public class File extends Node {
-
-    private String fileText = "";
 
     public File() {
         super();
     }
+
     public File(String name) {
         super(name);
     }
 
-    public File(String name, Directory parent) {
-        super(name, parent);
+    public File(Directory parent, String name) {
+        super(parent, name);
     }
 
     public File(String name, String fileText) {
-        super(name);
-        this.fileText = fileText;
+        super(name, fileText);
     }
 
-    public String getFileText() {
-        return fileText;
-    }
-
-    public void setFileText(String fileText) {
-        this.fileText = fileText;
+    public File(Directory parent, String name, String fileText) {
+        super(parent, name, fileText);
     }
 }
