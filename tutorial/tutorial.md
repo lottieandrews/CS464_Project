@@ -1,6 +1,6 @@
 - pwd
 - ls
-- less
+- cat
 - cd
 - rm
 - mkdir
