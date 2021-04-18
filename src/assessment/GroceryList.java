@@ -56,7 +56,7 @@ public class GroceryList {
             public Directory fruit = new Directory("Fruit");
                 public File banana = new File("banana",
                         "Orange you glad I didn't say... wait a minute.");
-                public file peach = new File("peach",
+                public File peach = new File("peach",
                         "Fuzzy and sweet, just like my dog.");
                 public File watermelon = new File("watermelon",
                         "Am I ripe? Slap me and find out.");

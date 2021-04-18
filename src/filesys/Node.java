@@ -1,6 +1,6 @@
 package filesys;
 
-public class Node {
+public abstract class Node {
     private Directory parent = null;
     private String name;
     private String fileText = "";
