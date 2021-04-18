@@ -17,16 +17,6 @@ public class FileNavigator {
         }
     }
 
-    public static void diff(String name1, String name2) {
-        if (getType(name1) == "Directory" && getType(name2) == "Directory") {
-            printError("Comparing two directories works in the real world, but not in this program!");
-        }
-        if (validateName(name1, new String[]{"File"}) && validateName(name2, new String[]{"File"})) {
-            List<String> file1 = Arrays.asList(getLines(name1));
-            List<String> file2 = Arrays.asList(getLines(name2));
-        }
-    }
-
     public static void grep(String word, String fileName) {
         if (validateName(fileName, new String[]{"File"})) {
             String[] fileText = getLines(currentDir.getFile(fileName).getFileText());
@@ -98,10 +88,6 @@ public class FileNavigator {
         if(validateName(fileName, new String[]{"File"})) {
             currentDir.remove(fileName);
         }
-    }
-
-    private static String[] getLines(String fileText) {
-        return fileText.split("\n");
     }
 
     private static String getType(String name) {
