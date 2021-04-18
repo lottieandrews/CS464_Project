@@ -70,4 +70,46 @@ public class GroceryList {
                         "Tastes very sweet, if you've never tried dessert before.");
                 public File cucumber = new File("cucumber",
                         "WARNING: Does NOT taste good in zucchini bread.");
+
+    public GroceryList() {
+        gl.addChild(beverages);
+            beverages.addChild(hotDrinks);
+                hotDrinks.addChild(blackTea);
+                hotDrinks.addChild(coffee);
+                hotDrinks.addChild(hotCocoa);
+            beverages.addChild(juice);
+                juice.addChild(appleJuice);
+                juice.addChild(orangeJuice);
+                juice.addChild(pruneJuice);
+            beverages.addChild(soda);
+                soda.addChild(cocaCola);
+                soda.addChild(dietSprite);
+                soda.addChild(rootBeer);
+        gl.addChild(dairy);
+            dairy.addChild(cheese);
+                cheese.addChild(mozzarella);
+                cheese.addChild(pepperJack);
+                cheese.addChild(swiss);
+            dairy.addChild(iceCream);
+                iceCream.addChild(vanilla);
+        gl.addChild(meat);
+            meat.addChild(chickenWings);
+            meat.addChild(beef);
+                beef.addChild(groundBeef);
+                beef.addChild(steak);
+            meat.addChild(seafood);
+                seafood.addChild(cannedTuna);
+                seafood.addChild(crabLegs);
+                seafood.addChild(jumboShrimp);
+        gl.addChild(produce);
+            produce.addChild(fruit);
+                fruit.addChild(banana);
+                fruit.addChild(peach);
+                fruit.addChild(watermelon);
+            produce.addChild(vegetables);
+                vegetables.addChild(broccoli);
+                vegetables.addChild(brusselsSprouts);
+                vegetables.addChild(carrot);
+                vegetables.addChild(cucumber);
+    }
 }
