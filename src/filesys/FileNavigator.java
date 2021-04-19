@@ -1,6 +1,5 @@
 package filesys;
 import java.util.Arrays;
-import java.util.List;
 
 public abstract class FileNavigator {
 
@@ -92,26 +91,31 @@ public abstract class FileNavigator {
     public void mv(String name1, String name2) {
         if (validateName(name1, new String[]{"File", "Directory"})) {
             if (getType(name1) == "Directory") {
-                if (getType(name2) == "File") {
+                if (getType(name2) == "File") { // Move directory to file
                     printError("Rename " + name1 + " to " + name2 + ": " + name2 + " is not a directory");
                 }
                 else {
-                    if (getType(name2) == null) {
-                        currentDir.addChild(new Directory(name2));
+                    if (getType(name2) == "Directory") { // Move directory into another directory
+                        currentDir.getSubDir(name2).addChild(currentDir.getSubDir(name1));
                     }
-                    currentDir.getSubDir(name2).addChild(currentDir.getSubDir(name1));
+                    else { // Rename directory
+                        currentDir.getSubDir(name1).setName(name2);
+                    }
                 }
             }
             else if (getType(name1) == "File") {
-                if (getType(name2) == "File") { //We may want to ask the user if they want to override the contents of the destination file inside this statement.
+                if (getType(name2) == "File") { // Move file to existing file
+                    // We may want to ask the user here if they want to override the contents of the destination file.
                     currentDir.remove(name2);
                     currentDir.getFile(name1).setName(name2);
                 }
                 else {
-                    if (getType(name2) == null) {
+                    if (getType(name2) == "Directory") { // Move file to directory
+                        currentDir.getSubDir(name2).addChild(currentDir.getFile(name1));
+                    }
+                    else { // Rename file
                         currentDir.addChild(new File(name2));
                     }
-                    currentDir.getSubDir(name2).addChild(currentDir.getFile(name1));
                 }
             }
         }
@@ -144,13 +148,13 @@ public abstract class FileNavigator {
     }
 
     private boolean validateName(String name, String[] validTypes) {
-        if (getType(name).equals("Directory")) {
+        if (getType(name) == "Directory") {
             if (Arrays.asList(validTypes).contains("Directory")) {
                 return true;
             }
             printError(name + " is a directory");
         }
-        else if (getType(name).equals("File")) {
+        else if (getType(name) == "File") {
             if (Arrays.asList(validTypes).contains("File")) {
                 return true;
             }

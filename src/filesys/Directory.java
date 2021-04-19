@@ -25,6 +25,16 @@ public class Directory extends Node {
         this.subDirs = new TreeMap<String, Directory>();
     }
 
+    @Override
+    public void setName(String name) {
+        String oldName = this.getName();
+        super.setName(name);
+        if (this.getParent() != null) {
+            this.getParent().remove(oldName);
+            this.getParent().addChild(this);
+        }
+    }
+
     public void addChild(Directory child) {
         child.setParent(this);
         subDirs.put(child.getName(), child);
