@@ -94,13 +94,11 @@ public abstract class FileNavigator {
                 if (getType(name2) == "File") { // Move directory to file
                     printError("Rename " + name1 + " to " + name2 + ": " + name2 + " is not a directory");
                 }
-                else {
-                    if (getType(name2) == "Directory") { // Move directory into another directory
-                        currentDir.getSubDir(name2).addChild(currentDir.getSubDir(name1));
-                    }
-                    else { // Rename directory
-                        currentDir.getSubDir(name1).setName(name2);
-                    }
+                else if (getType(name2) == "Directory") { // Move directory into another directory
+                    currentDir.getSubDir(name2).addChild(currentDir.getSubDir(name1));
+                }
+                else { // Rename directory
+                    currentDir.getSubDir(name1).setName(name2);
                 }
             }
             else if (getType(name1) == "File") {
@@ -109,13 +107,11 @@ public abstract class FileNavigator {
                     currentDir.remove(name2);
                     currentDir.getFile(name1).setName(name2);
                 }
-                else {
-                    if (getType(name2) == "Directory") { // Move file to directory
+                else if (getType(name2) == "Directory") { // Move file to directory
                         currentDir.getSubDir(name2).addChild(currentDir.getFile(name1));
-                    }
-                    else { // Rename file
-                        currentDir.addChild(new File(name2));
-                    }
+                }
+                else { // Rename file
+                    currentDir.getFile(name1).setName(name2);
                 }
             }
         }
