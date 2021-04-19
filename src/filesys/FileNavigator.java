@@ -75,7 +75,7 @@ public abstract class FileNavigator {
 
     public void mkdir(String dirName) {
         if (getType(dirName) != null) {
-            printError(dirName + ": File already exists");
+            printError(dirName + ": Directory already exists");
         }
         else {
             currentDir.addChild(new Directory(dirName));
