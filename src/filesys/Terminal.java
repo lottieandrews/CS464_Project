@@ -4,7 +4,6 @@ import assessment.GroceryList;
 import java.util.Scanner;
 
 public class Terminal extends FileNavigator {
-
     public final String USER;
     private Scanner scnr = new Scanner(System.in);
 
@@ -42,9 +41,14 @@ public class Terminal extends FileNavigator {
     }
 
     public void processUserInput(String in) {
-        String[] args = in.split(" ");
+        String[] args = in.trim().split(" ");
         switch(args[0]) {
             case "cd":
+                if (args.length == 1) { cd(); }
+                else if (args.length == 2) { cd(args[1]); }
+                else {
+                    printError("cd: extra operand `" + args[2] + "`", "cd");
+                }
                 break;
             case "exit":
                 break;
@@ -65,8 +69,21 @@ public class Terminal extends FileNavigator {
                 break;
             case "rm":
                 break;
-            default:
+            case "":
                 break;
+            default:
+                printError("Command not found: " + args[0], "man");
+                break;
+        }
+    }
+
+    private void printError(String errorMessage, String command) {
+        System.out.println(errorMessage);
+        if (command.equals("man")) {
+            System.out.println("Stuck? Type `man` for more information.");
+        }
+        else {
+            System.out.println("Stuck? Type `man " + command + "` for more information.");
         }
     }
 

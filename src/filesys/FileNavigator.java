@@ -147,7 +147,8 @@ public abstract class FileNavigator {
         return false;
     }
 
+    // We want to print to stdout and not stderr here because we're essentially treating this method as our exception catcher.
     private void printError(String errorMessage) {
-        System.err.println(errorMessage);
+        System.out.println(errorMessage);
     }
 }
