@@ -53,6 +53,7 @@ public class Terminal extends FileNavigator {
             case "exit":
                 break;
             case "grep":
+                if (args.length < 3)
                 break;
             case "ls":
                 break;
