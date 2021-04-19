@@ -43,7 +43,7 @@ public abstract class FileNavigator {
     }
 
     public void ls(String name) {
-        if (validateName(name, {File, Directory})) {
+        if (validateName(name, new String[]{"File", "Directory"})) {
             if (getType(name).equals("File")) {
                 System.out.println(name);
             }
