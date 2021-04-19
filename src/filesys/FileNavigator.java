@@ -17,12 +17,6 @@ public abstract class FileNavigator {
         this.currentDir = ROOT_DIR;
     }
 
-    public void cat(String fileName) {
-        if (validateName(fileName, new String[]{"File"})) {
-            System.out.println(currentDir.getFile(fileName).getFileText());
-        }
-    }
-
     public void cd() {
         currentDir = ROOT_DIR;
     }
@@ -53,12 +47,26 @@ public abstract class FileNavigator {
         }
     }
 
+    public void man() {
+        System.out.println("\nMAN: ACCESS THE MANUAL\n\n" +
+                "Command Input: \n" +
+                "man [COMMAND]\n\n" +
+                "Use the `man` command followed by a command name to access information about that command.\n" +
+                "Supported commands: cd, exit, grep, ls, mkdir, more, mv, pwd, rm\n");
+    }
+
     public void mkdir(String dirName) {
         if (getType(dirName) != null) {
             printError(dirName + ": File already exists");
         }
         else {
             currentDir.addChild(new Directory(dirName));
+        }
+    }
+
+    public void more(String fileName) {
+        if (validateName(fileName, new String[]{"File"})) {
+            System.out.println(currentDir.getFile(fileName).getFileText());
         }
     }
 
