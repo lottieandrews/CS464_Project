@@ -42,7 +42,27 @@ public class Terminal extends FileNavigator {
     }
 
     public void processUserInput(String in) {
-        System.out.println(in);
+        String[] args = in.split(' ');
+        switch(args[0]) {
+            case "cat":
+                break;
+            case "cd":
+                break;
+            case "grep":
+                break;
+            case "ls":
+                break;
+            case "mkdir":
+                break;
+            case "mv":
+                break;
+            case "pwd":
+                break;
+            case "rm":
+                break;
+            default:
+                break;
+        }
     }
 
     public static void main(String[] args) {
