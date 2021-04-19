@@ -1,6 +1,7 @@
 package filesys;
 import assessment.GroceryList;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Terminal extends FileNavigator {
@@ -53,12 +54,18 @@ public class Terminal extends FileNavigator {
             case "exit":
                 break;
             case "grep":
-                if (args.length < 3)
+                if (args.length > 3) {
+                    grep(String.join(" ", Arrays.copyOfRange(args, 1, args.length - 2)), args[args.length-1]);
+                }
+                else if (validateNumArgs(args, 3, "grep")) {
+                    grep(args[1], args[2]);
+                }
                 break;
             case "ls":
                 break;
             case "man":
-                man();
+                if (args.length == 1) { man(); }
+                else (args.length == 2) { man(args[1]); }
                 break;
             case "mkdir":
                 break;
@@ -78,13 +85,28 @@ public class Terminal extends FileNavigator {
         }
     }
 
+    //Use if a command may only be followed by one specific number of arguments.
+    private boolean validateNumArgs(String[] args, int validNum, String command) {
+        if (args.length == validNum) {
+            return true;
+        }
+        else if (args.length < validNum) {
+            printError(command + ": missing operand after `" + args[args.length - 1] + "`", command);
+            return false;
+        }
+        else {
+            printError(command + ": extra operand `" + args[validNum] + "`", command);
+            return false;
+        }
+    }
+
     private void printError(String errorMessage, String command) {
         System.out.println(errorMessage);
         if (command.equals("man")) {
-            System.out.println("Stuck? Type `man` for more information.");
+            System.out.println("Need help? Type `man` for more information.");
         }
         else {
-            System.out.println("Stuck? Type `man " + command + "` for more information.");
+            System.out.println("Need help? Type `man " + command + "` for more information.");
         }
     }
 

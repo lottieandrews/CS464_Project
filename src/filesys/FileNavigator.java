@@ -129,13 +129,13 @@ public abstract class FileNavigator {
     }
 
     private boolean validateName(String name, String[] validTypes) {
-        if (getType(name) == "Directory") {
+        if (getType(name).equals("Directory")) {
             if (Arrays.asList(validTypes).contains("Directory")) {
                 return true;
             }
             printError(name + " is a directory");
         }
-        else if (getType(name) == "File") {
+        else if (getType(name).equals("File")) {
             if (Arrays.asList(validTypes).contains("File")) {
                 return true;
             }
