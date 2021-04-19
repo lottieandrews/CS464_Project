@@ -4,8 +4,8 @@ import java.util.List;
 
 public abstract class FileNavigator {
 
-    private final Directory ROOT_DIR;
-    private Directory currentDir;
+    protected final Directory ROOT_DIR;
+    protected Directory currentDir;
 
     public FileNavigator() {
         this.ROOT_DIR = new Directory();
@@ -15,10 +15,6 @@ public abstract class FileNavigator {
     public FileNavigator(Directory ROOT_DIR) {
         this.ROOT_DIR = ROOT_DIR;
         this.currentDir = ROOT_DIR;
-    }
-
-    public String getCurrentDirName() {
-        return currentDir.getName();
     }
 
     public void cd() {

@@ -6,6 +6,7 @@ import java.util.Scanner;
 public class Terminal extends FileNavigator {
 
     public final String USER;
+    private Scanner scnr = new Scanner(System.in);
 
     public Terminal() {
         super();
@@ -22,6 +23,24 @@ public class Terminal extends FileNavigator {
         this.USER = USER;
     }
 
+    public void launch() {
+        Scanner s = new Scanner(System.in);
+        System.out.print(USER + ":" + currentDir.getName() + " % ");
+        while(s.hasNextLine()) {
+            String in = s.nextLine();
+            if (in.equals("exit")) {
+                break;
+            }
+            else {
+                processUserInput(in);
+                System.out.print(USER + ":" + currentDir.getName() + " % ");
+            }
+        }
+        s.close();
+        System.out.println("\n[Process completed]");
+        System.out.println("Rerun the program to access a new terminal window.");
+    }
+
     public void processUserInput(String in) {
         System.out.println(in);
     }
@@ -29,20 +48,6 @@ public class Terminal extends FileNavigator {
     public static void main(String[] args) {
         GroceryList gl = new GroceryList();
         Terminal tr = new Terminal(gl.gl);
-        Scanner s = new Scanner(System.in);
-        System.out.print(tr.USER + ":" + tr.getCurrentDirName() + " % ");
-        while(s.hasNextLine()) {
-            String in = s.nextLine();
-            if (in.equals("exit")) {
-                break;
-            }
-            else {
-                tr.processUserInput(in);
-                System.out.print(tr.USER + ":" + tr.getCurrentDirName() + " % ");
-            }
-        }
-        s.close();
-        System.out.println("\n[Process completed]");
-        System.out.println("Rerun the program to access a new terminal window.");
+        tr.launch();
     }
 }
