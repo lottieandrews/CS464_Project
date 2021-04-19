@@ -51,8 +51,6 @@ public class Terminal extends FileNavigator {
                     printError("cd: extra operand `" + args[2] + "`", "cd");
                 }
                 break;
-            case "exit":
-                break;
             case "grep":
                 if (args.length > 3) {
                     grep(String.join(" ", Arrays.copyOfRange(args, 1, args.length - 2)), args[args.length-1]);
@@ -62,22 +60,33 @@ public class Terminal extends FileNavigator {
                 }
                 break;
             case "ls":
+                if (args.length == 1) { ls(); }
+                else if (args.length == 2) { ls(args[1]); }
+                else {
+                    printError("ls: extra operand `" + args[2] + "`", "ls");
+                }
                 break;
             case "man":
                 if (args.length == 1) { man(); }
-                else (args.length == 2) { man(args[1]); }
+                else if (args.length == 2) { man(args[1]); }
                 break;
             case "mkdir":
+                if (validateNumArgs(args, 2, "mkdir")) { mkdir(args[1]); }
                 break;
             case "more":
+                if (validateNumArgs(args, 2, "more")) { more(args[1]); }
                 break;
             case "mv":
+                if (validateNumArgs(args, 3, "mv")) { mv(args[1], args[2]); }
                 break;
             case "pwd":
+                if (validateNumArgs(args, 1, "pwd")) { pwd(); }
                 break;
             case "rm":
+                if (validateNumArgs(args, 2, "rm")) { rm(args[1]); }
                 break;
             case "":
+            case "exit":
                 break;
             default:
                 printError("Command not found: " + args[0], "man");
