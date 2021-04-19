@@ -1,5 +1,4 @@
 package filesys;
-import assessment.GroceryList;
 
 import java.util.Arrays;
 import java.util.Scanner;
@@ -117,11 +116,5 @@ public class Terminal extends FileNavigator {
         else {
             System.out.println("Need help? Type `man " + command + "` for more information.");
         }
-    }
-
-    public static void main(String[] args) {
-        GroceryList gl = new GroceryList();
-        Terminal tr = new Terminal(gl.gl);
-        tr.launch();
     }
 }
