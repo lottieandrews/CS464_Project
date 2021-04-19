@@ -55,6 +55,10 @@ public abstract class FileNavigator {
                 "Supported commands: cd, exit, grep, ls, mkdir, more, mv, pwd, rm\n");
     }
 
+    public void man(String command) {
+        System.out.println("This manual entry hasn't been written yet!");
+    }
+
     public void mkdir(String dirName) {
         if (getType(dirName) != null) {
             printError(dirName + ": File already exists");
