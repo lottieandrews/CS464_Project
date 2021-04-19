@@ -1,12 +1,11 @@
 - pwd
 - ls
-- cat
+- more
 - cd
 - rm
 - mkdir
 - mv
 - grep
-- diff
 - .
 - ..
 - man
