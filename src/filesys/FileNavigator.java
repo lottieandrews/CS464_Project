@@ -39,10 +39,25 @@ public abstract class FileNavigator {
     }
 
     public void ls() {
-        for (Directory dir : currentDir.getSubDirList().values()) {
-            System.out.println(dir.getName());
+        ls(currentDir);
+    }
+
+    public void ls(String name) {
+        if (validateName(name, {File, Directory})) {
+            if (getType(name).equals("File")) {
+                System.out.println(name);
+            }
+            else {
+                ls(currentDir.getSubDir(name));
+            }
         }
-        for (File file : currentDir.getFileList().values()) {
+    }
+
+    private void ls(Directory dir) {
+        for (Directory d : dir.getSubDirList().values()) {
+            System.out.println(d.getName());
+        }
+        for (File file : dir.getFileList().values()) {
             System.out.println(file.getName());
         }
     }
