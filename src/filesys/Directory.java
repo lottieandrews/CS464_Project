@@ -65,4 +65,8 @@ public class Directory extends Node {
     public Directory getSubDir(String dirName) {
         return subDirs.get(dirName);
     }
+
+    public boolean isEmpty() {
+        return files.isEmpty() && subDirs.isEmpty();
+    }
 }
