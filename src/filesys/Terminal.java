@@ -86,6 +86,7 @@ public class Terminal extends FileNavigator {
                 break;
             case "rmdir":
                 if (validateNumArgs(args, 2, "rmdir")) { rmdir(args[1]); }
+                break;
             case "":
             case "exit":
                 break;
