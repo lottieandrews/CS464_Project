@@ -6,10 +6,9 @@ public class GroceryList {
         public Directory beverages = new Directory("Beverages");
             public Directory hotDrinks = new Directory("HotDrinks");
                 public File blackTea = new File("blackTea",
-                        "A lovely morning beverage.\n" +
-                        "Contains 47mg of caffeine per serving.");
+                        "Pinkies up!");
                 public File coffee = new File("coffee",
-                        "A lovely morning beverage.\n" +
+                        "A revitalizing morning beverage.\n" +
                         "Contains 96mg of caffeine per serving.");
                 public File hotCocoa = new File("hotCocoa",
                         "Makes the holiday season bright.");
@@ -61,6 +60,7 @@ public class GroceryList {
                         "Fuzzy and sweet, just like my dog.");
                 public File watermelon = new File("watermelon",
                         "Am I ripe? Slap me and find out.");
+                public Directory berries = new Directory("Berries");
             public Directory vegetables = new Directory("Vegetables");
                 public File broccoli = new File("broccoli",
                         "Look at these tiny trees! I feel like a giant!");
@@ -107,6 +107,7 @@ public class GroceryList {
                 fruit.addChild(banana);
                 fruit.addChild(peach);
                 fruit.addChild(watermelon);
+                fruit.addChild(berries);
             produce.addChild(vegetables);
                 vegetables.addChild(broccoli);
                 vegetables.addChild(brusselsSprouts);
