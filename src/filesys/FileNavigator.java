@@ -133,6 +133,9 @@ public abstract class FileNavigator {
     }
 
     public void rmdir(String dirName) {
+        if (dirName.equals(".") || dirName.equals("..")) {
+            printError("rmdir: " + dirName + ": Operation not permitted");
+        }
         if(validateName(dirName, new String[]{"Directory"})) {
             if (!currentDir.getSubDir(dirName).isEmpty()) {
                 printError(dirName + ": Directory not empty");
