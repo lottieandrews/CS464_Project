@@ -150,6 +150,12 @@ public abstract class FileNavigator {
         }
     }
 
+    public void rmdir(String dirName) {
+        if(validateName(dirName, new String[]{"Directory"})) {
+            currentDir.remove(dirName);
+        }
+    }
+
     private String[] getLines(String fileText) {
         return fileText.split("\n");
     }
