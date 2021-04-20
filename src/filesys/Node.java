@@ -1,8 +1,9 @@
 package filesys;
 
-public class Node {
+public abstract class Node {
     private Directory parent = null;
     private String name;
+    private String fileText = "";
 
     public Node() {
         this.name = "Untitled";
@@ -12,9 +13,9 @@ public class Node {
         this.name = name;
     }
 
-    public Node(String name, Directory parent) {
+    public Node(String name, String fileText) {
         this.name = name;
-        this.parent = parent;
+        this.fileText = fileText;
     }
 
     public Directory getParent() {
@@ -31,6 +32,14 @@ public class Node {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getFileText() {
+        return fileText;
+    }
+
+    public void setFileText(String fileText) {
+        this.fileText = fileText;
     }
 
     public String getParentName() {

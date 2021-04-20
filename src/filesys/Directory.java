@@ -2,7 +2,7 @@ package filesys;
 
 import java.util.*;
 
-public class Directory extends File {
+public class Directory extends Node {
 
         private TreeMap<String, File> files;
         private TreeMap<String, Directory> subDirs;
@@ -19,10 +19,20 @@ public class Directory extends File {
         this.subDirs = new TreeMap<String, Directory>();
     }
 
-    public Directory(String name, Directory parent) {
-        super(name, parent);
+    public Directory(String name, String fileText) {
+        super(name, fileText);
         this.files = new TreeMap<String, File>();
         this.subDirs = new TreeMap<String, Directory>();
+    }
+
+    @Override
+    public void setName(String name) {
+        String oldName = this.getName();
+        super.setName(name);
+        if (this.getParent() != null) {
+            this.getParent().remove(oldName);
+            this.getParent().addChild(this);
+        }
     }
 
     public void addChild(Directory child) {
