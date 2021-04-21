@@ -22,14 +22,7 @@ public abstract class FileNavigator {
 
     public void cd(String dirName) {
         if (validateName(dirName, new String[]{"Directory"})) {
-            if (dirName.equals("..")) {
-                if (currentDir.getParent() != null) {
-                    currentDir = currentDir.getParent();
-                }
-            }
-            else {
-                currentDir = currentDir.getSubDir(dirName);
-            }
+            currentDir = currentDir.getSubDir(dirName);
         }
     }
 
@@ -50,13 +43,7 @@ public abstract class FileNavigator {
 
     public void ls(String name) {
         if (validateName(name, new String[]{"File", "Directory"})) {
-            if (name.equals("..")) {
-                if (currentDir.getParent() != null) {
-                    ls(currentDir.getParent());
-                }
-                else ls();
-            }
-            else if (getType(name).equals("File")) {
+            if (getType(name).equals("File")) {
                 System.out.println(name);
             }
             else {
@@ -104,19 +91,14 @@ public abstract class FileNavigator {
     public void mv(String name1, String name2) {
         if (validateName(name1, new String[]{"File", "Directory"})) {
             if (getType(name1) == "Directory") {
-                if (name1.equals("..")) { // Move parent directory somewhere else (bad)
+                if (name1.equals("..") || name1.equals(".")) { // Move current or parent directory somewhere else (bad)
                     printError("Rename " + name1 + " to " + name2 + ": Invalid argument");
                 }
                 if (getType(name2) == "File") { // Move directory to file (bad)
                     printError("Rename " + name1 + " to " + name2 + ": " + name2 + " is not a directory");
                 }
                 else if (getType(name2) == "Directory") { // Move directory into another directory
-                    if (name2.equals("..") && currentDir.getParent() != null) { // Move directory into parent directory
-                        currentDir.getParent().addChild(currentDir.getSubDir(name1));
-                    }
-                    else {
-                        currentDir.getSubDir(name2).addChild(currentDir.getSubDir(name1));
-                    }
+                    currentDir.getSubDir(name2).addChild(currentDir.getSubDir(name1));
                     currentDir.remove(name1);
                 }
                 else { // Rename directory
@@ -150,12 +132,26 @@ public abstract class FileNavigator {
         }
     }
 
+    public void rmdir(String dirName) {
+        if (dirName.equals(".") || dirName.equals("..")) {
+            printError("rmdir: " + dirName + ": Operation not permitted");
+        }
+        else if(validateName(dirName, new String[]{"Directory"})) {
+            if (!currentDir.getSubDir(dirName).isEmpty()) {
+                printError(dirName + ": Directory not empty");
+            }
+            else {
+                currentDir.remove(dirName);
+            }
+        }
+    }
+
     private String[] getLines(String fileText) {
         return fileText.split("\n");
     }
 
     private String getType(String name) {
-        if (currentDir.getSubDir(name) != null || name.equals("..") || name.equals(".")) {
+        if (currentDir.getSubDir(name) != null) {
             return "Directory";
         }
         else if (currentDir.getFile(name) != null) {
