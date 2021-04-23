@@ -33,33 +33,34 @@ public class Clue {
                 public File billiardClue2 = new File("BilliardClue2", "Seriously? Obviously the murder weapon wasn't the rope!");
 
     public Clue() {
-        rooms.addChild(study);
-            study.addChild(studyClue1);
-            study.addChild(studyClue2);
-        rooms.addChild(kitchen);
-            kitchen.addChild(kitchenClue1);
-            kitchen.addChild(kitchenClue2);
-        rooms.addChild(hall);
-            hall.addChild(hallClue1);
-            hall.addChild(hallClue2);
-        rooms.addChild(conservatory);
-            conservatory.addChild(conservatoryClue1);
-            conservatory.addChild(conservatoryClue2);
-        rooms.addChild(lounge);
-            lounge.addChild(loungeClue1);
-            lounge.addChild(loungeClue2);
-        rooms.addChild(ballroom);
-            ballroom.addChild(ballroomClue1);
-            ballroom.addChild(ballroomClue2);
-        rooms.addChild(diningRoom);
-            diningRoom.addChild(diningClue1);
-            diningRoom.addChild(diningClue2);
-        rooms.addChild(library);
-            library.addChild(libraryClue1);
-            library.addChild(libraryClue2);
-        rooms.addChild(billiardRoom);
-            billiardRoom.addChild(billiardClue1);
-            billiardRoom.addChild(billiardClue2);
+        clue.addChild(rooms);
+            rooms.addChild(study);
+                study.addChild(studyClue1);
+                study.addChild(studyClue2);
+            rooms.addChild(kitchen);
+                kitchen.addChild(kitchenClue1);
+                kitchen.addChild(kitchenClue2);
+            rooms.addChild(hall);
+                hall.addChild(hallClue1);
+                hall.addChild(hallClue2);
+            rooms.addChild(conservatory);
+                conservatory.addChild(conservatoryClue1);
+                conservatory.addChild(conservatoryClue2);
+            rooms.addChild(lounge);
+                lounge.addChild(loungeClue1);
+                lounge.addChild(loungeClue2);
+            rooms.addChild(ballroom);
+                ballroom.addChild(ballroomClue1);
+                ballroom.addChild(ballroomClue2);
+            rooms.addChild(diningRoom);
+                diningRoom.addChild(diningClue1);
+                diningRoom.addChild(diningClue2);
+            rooms.addChild(library);
+                library.addChild(libraryClue1);
+                library.addChild(libraryClue2);
+            rooms.addChild(billiardRoom);
+                billiardRoom.addChild(billiardClue1);
+                billiardRoom.addChild(billiardClue2);
     }
 
     public static void main(String[] args){
