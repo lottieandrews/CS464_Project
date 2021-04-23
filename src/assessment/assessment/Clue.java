@@ -65,7 +65,7 @@ public class Clue {
 
     public static void main(String[] args){
         Clue clue = new Clue();
-        Terminal tr = new Terminal(clue.rooms);
+        Terminal tr = new Terminal(clue.clue);
         tr.launch();
     }
 }
