@@ -29,6 +29,10 @@ public class Manual {
                 System.out.println("""
                         
                         CD: CHANGE DIRECTORY
+                        
+                        Command Input:
+                        cd
+                        cd [DIRECTORY]
 
                         This manual entry hasn't been written yet!
                         """);
@@ -37,6 +41,9 @@ public class Manual {
                 System.out.println("""
                         
                         GREP: SEARCH INSIDE A FILE
+                        
+                        Command Input:
+                        grep [WORD] [FILE]
 
                         This manual entry hasn't been written yet!
                         """);
@@ -46,6 +53,10 @@ public class Manual {
                             
                             LS: LIST DIRECTORY CONTENTS
                             
+                            Command Input:
+                            ls
+                            ls [DIRECTORY]
+                            
                             This manual entry hasn't been written yet!
                             """);
                 break;
@@ -53,6 +64,9 @@ public class Manual {
                 System.out.println("""
                         
                         MKDIR: MAKE DIRECTORY
+                        
+                        Command Input:
+                        mkdir [DIRECTORY]
                         
                         This manual entry hasn't been written yet!
                         """);
@@ -62,6 +76,9 @@ public class Manual {
                         
                         MORE: VIEW FILE CONTENTS
                         
+                        Command Input:
+                        more [FILE]
+                        
                         This manual entry hasn't been written yet!
                         """);
                 break;
@@ -69,6 +86,10 @@ public class Manual {
                 System.out.println("""
                         
                         MV: MOVE OR RENAME
+                        
+                        Command Input:
+                        mv [FILE] [FILE]
+                        mv [FILE OR DIRECTORY] [DIRECTORY]
                         
                         This manual entry hasn't been written yet!
                         """);
@@ -78,13 +99,19 @@ public class Manual {
                         
                         PWD: PRINT CURRENT DIRECTORY
                         
+                        Command Input:
+                        pwd
+                        
                         This manual entry hasn't been written yet!
                         """);
                 break;
             case "rm":
                 System.out.println("""
                         
-                        "RM: REMOVE A FILE
+                        RM: REMOVE A FILE
+                        
+                        Command Input:
+                        rm [FILE]
                         
                         This manual entry hasn't been written yet!
                         """);
@@ -93,6 +120,9 @@ public class Manual {
                 System.out.println("""
                         
                         RMDIR: REMOVE EMPTY DIRECTORY
+                        
+                        Command Input:
+                        rmdir [DIRECTORY]
                         
                         This manual entry hasn't been written yet!
                         """);
