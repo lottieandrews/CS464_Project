@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 public class Terminal extends FileNavigator {
     public final String USER;
-    private Scanner scnr = new Scanner(System.in);
+    public final Manual MANUAL = new Manual();
 
     public Terminal() {
         super();
@@ -66,8 +66,8 @@ public class Terminal extends FileNavigator {
                 }
                 break;
             case "man":
-                if (args.length == 1) { man(); }
-                else if (args.length == 2) { man(args[1]); }
+                if (args.length == 1) { MANUAL.man(); }
+                else if (args.length == 2) { MANUAL.man(args[1]); }
                 break;
             case "mkdir":
                 if (validateNumArgs(args, 2, "mkdir")) { mkdir(args[1]); }
