@@ -64,6 +64,11 @@ public class Clue {
     }
 
     public static void main(String[] args){
+        System.out.println("Welcome to Clue the Terminal Game!");
+        System.out.println("Use the cd, exit, grep, ls, mkdir, more, mv, pwd, and rm commands to " +
+        "investigate the clues hidden in each room and find out who dunnit, where they dunnit, and what they dunnit with! " + 
+        "Feel free to use the man command if you get stuck on how to properly use a command and need some help. Use the " +
+        "exit command when you're finished to exit the game. Enjoy!");
         Clue clue = new Clue();
         Terminal tr = new Terminal(clue.clue);
         tr.launch();
