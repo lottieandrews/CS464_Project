@@ -7,6 +7,7 @@ public abstract class FileNavigator {
     protected Directory currentDir;
 
     int moveCounter = 0;
+    boolean isFirstTime = true;
 
     public FileNavigator() {
         this.ROOT_DIR = new Directory();
@@ -25,10 +26,14 @@ public abstract class FileNavigator {
     public void cd(String dirName) {
         if (validateName(dirName, new String[]{"Directory"})) {
             currentDir = currentDir.getSubDir(dirName);
+            if (currentDir.getName().equals("Rooms")){
+                System.out.println("You're back in the 'Rooms' directory. Choose another room to investigate. Remember to use the ls command to see which rooms can be searched.");
+            }
         }
-        if (dirName.equals("Rooms")){
+        if (dirName.equals("Rooms") && isFirstTime){
             System.out.println("Good work! Now use the ls command to look at your options " + 
             "and the cd command again to choose which room you'd like to investigate first. ");
+            isFirstTime = false;
         }
         if (dirName.equals("Ballroom") || dirName.equals("Billiard_Room") || dirName.equals("Conservatory") || dirName.equals("Dining_Room") || dirName.equals("Hall") || dirName.equals("Kitchen") || dirName.equals("Library") || dirName.equals("Lounge") || dirName.equals("Study")){
             System.out.println("You're in the " + dirName + "! Use the ls command to list the clues hidden here. Use the more command to read what the clues contain.");
