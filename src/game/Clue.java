@@ -1,4 +1,4 @@
-package assessment;
+package game;
 import filesys.*;
 
 public class Clue {

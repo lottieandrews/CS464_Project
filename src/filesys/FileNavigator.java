@@ -1,4 +1,7 @@
 package filesys;
+import filesys.Directory;
+import filesys.File;
+
 import java.util.Arrays;
 
 public abstract class FileNavigator {
