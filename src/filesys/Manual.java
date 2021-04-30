@@ -2,14 +2,7 @@ package filesys;
 
 public class Manual {
 
-    private int timesAccessed = 0;
-
-    public int getTimesAccessed() {
-        return timesAccessed;
-    }
-
     public void man() {
-        timesAccessed++;
         System.out.println("""
 
                 MAN: ACCESS THE MANUAL
@@ -23,7 +16,6 @@ public class Manual {
     }
 
     public void man(String command) {
-        timesAccessed++;
         switch (command) {
             case "cd":
                 System.out.println("""
