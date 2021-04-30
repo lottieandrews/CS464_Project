@@ -9,6 +9,7 @@ public abstract class FileNavigator {
     int moveCounter = 0;
     boolean isFirstTime = true;
     int rmdirCounter = 0;
+    int grepCounter = 0;
 
     public FileNavigator() {
         this.ROOT_DIR = new Directory();
@@ -53,9 +54,26 @@ public abstract class FileNavigator {
             String[] fileText = getLines(currentDir.getFile(fileName).getFileText());
             for (String line : fileText) {
                 if (line.contains(word)) {
-                    System.out.println(line);
+                    //System.out.println(line);
+                    switch(word){
+                        case "Mustard":
+                            System.out.println("Great work! You found the murderer!");
+                            grepCounter++;
+                            break;
+                        case "study":
+                            System.out.println("Nice job! You found the scene of the crime!");
+                            grepCounter++;
+                            break;
+                        case "revolver":
+                            System.out.println("Excellent! You found the murder weapon!");
+                            grepCounter++;
+                            break;
+                    }
                 }
             }
+        }
+        if (grepCounter >= 3){
+            System.out.println("Congratulations! You won the game! Use the exit command to quit the terminal.");
         }
     }
 
@@ -108,10 +126,12 @@ public abstract class FileNavigator {
     }
 
     public void more(String fileName) {
-        if (validateName(fileName, new String[]{"File"})) {
+        if (validateName(fileName, new String[]{"File"}) && !fileName.equals("CONFIDENTIAL")) {
             System.out.println(currentDir.getFile(fileName).getFileText());
+            System.out.println("You found a clue! Use the mv to rename the clue to something that's easier to remember (i.e., 'NotWrench') then use the mv command again to move it to your Notebook for safe keeping.");
+        } else {
+            System.out.println("Hey! No peeking!");
         }
-        System.out.println("You found a clue! Use the mv to rename the clue to something that's easier to remember (i.e., 'NotWrench') then use the mv command again to move it to your Notebook for safe keeping.");
     }
 
     public void mv(String name1, String name2) {

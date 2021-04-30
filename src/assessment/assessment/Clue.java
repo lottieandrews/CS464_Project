@@ -3,6 +3,7 @@ import filesys.*;
 
 public class Clue {
     public Directory clue = new Directory("Clue");
+        public File confidential = new File("CONFIDENTIAL", "Colonel Mustard in the study with the revolver!");
         public Directory rooms = new Directory("Rooms");
             public Directory study = new Directory("Study");
                 public File studyClue1 = new File("StudyClue1", "You have to believe me! It wasn't Miss Scarlet!");
@@ -33,6 +34,7 @@ public class Clue {
                 public File billiardClue2 = new File("BilliardClue2", "Seriously? Obviously the murder weapon wasn't the rope!");
 
     public Clue() {
+        clue.addChild(confidential);
         clue.addChild(rooms);
             rooms.addChild(study);
                 study.addChild(studyClue1);
