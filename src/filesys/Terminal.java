@@ -50,6 +50,9 @@ public class Terminal extends FileNavigator {
                     printError("cd: extra operand `" + args[2] + "`", "cd");
                 }
                 break;
+            case "help":
+                    MANUAL.man();
+                break;
             case "grep":
                 if (args.length > 3) {
                     grep(String.join(" ", Arrays.copyOfRange(args, 1, args.length - 2)), args[args.length-1]);
