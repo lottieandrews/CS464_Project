@@ -23,13 +23,13 @@ public class Clue {
             public Directory ballroom = new Directory("Ballroom");
                 public File ballroomClue1 = new File("ballroomClue1", "It wasn't in the dining room! Couldn't have been!");
                 public File ballroomClue2 = new File("ballroomClue2", "No way he was killed with a knife!");
-            public Directory diningRoom = new Directory("Dining_Room");
+            public Directory diningRoom = new Directory("DiningRoom");
                 public File diningClue1 = new File("diningClue1", "Don't ask me how I know this but it wasn't Mrs. Peacock!");
                 public File diningClue2 = new File("diningClue2", "Ballroom's too clean for it to have happened in there!");
             public Directory library = new Directory("Library");
                 public File libraryClue1 = new File("libraryClue1", "Definitely didn't happen in the Kitchen!");
                 public File libraryClue2 = new File("libraryClue2", "All the plumbing seems to be intact so it couldn't have been the lead pipe!");
-            public Directory billiardRoom = new Directory("Billiard_Room");
+            public Directory billiardRoom = new Directory("BilliardRoom");
                 public File billiardClue1 = new File("billiardClue1", "It most certainly couldn't have happened in the hall!");
                 public File billiardClue2 = new File("billiardClue2", "Seriously? Obviously the murder weapon wasn't the rope!");
 
@@ -71,7 +71,7 @@ public class Clue {
         "investigate the clues hidden in each room and find out who dunnit, where they dunnit, and what they dunnit with! " + 
         "Feel free to use the man command if you get stuck on how to properly use a command and need some help. Use the " +
         "exit command when you're finished to exit the game.");
-        System.out.println("\nStart by creating a directory called 'Notebook' to store your clues.");
+        System.out.println("\nStart by creating a directory called 'Notebook' to store your clues.\n");
         Clue clue = new Clue();
         Terminal tr = new Terminal(clue.clue);
         tr.launch();
