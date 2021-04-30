@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 public class Terminal extends FileNavigator {
     public final String USER;
-    private Scanner scnr = new Scanner(System.in);
+    //private Scanner scnr = new Scanner(System.in);
 
     public Terminal() {
         super();
