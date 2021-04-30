@@ -1,14 +1,4 @@
-- more
-- rm
-- mkdir
-- rmdir
-- mv
-- grep
-- .
-- ..
-- man
-
-# Bash Tutorial
+# Command Line Tutorial
 
 ## What is the command line?
 [An overview to what this tutorial is about]
@@ -18,12 +8,13 @@
 
 ## Tutorial
 ### `pwd`
-The **`pwd`** (print working directory) command tells you where you are within a filesystem.
+The **`pwd`** (print working directory) command tells you where you are within a filesystem. In the example below, `/Users/guest` refers to the user's _home directory_. The user is currently located in the `Documents` folder.
 
 	> pwd
 	/Users/guest/Documents
+	> 
 	
-In the example above, `/Users/guest` refers to the user's _home directory_. The user is currently located in the `Documents` folder. In the terminal used in this tutorial, the `pwd` command used will show only the name of the folder you are currently located in. The rest of the file path will be hidden.
+Use this command whenever you are unsure where you are located within the file system. In the terminal used in this tutorial, the `pwd` command used will show only the name of the folder you are currently located in. The rest of the file path will be hidden.
 #### Command #1
 Type the **`pwd`** command to find out your current location within your filesystem. Whenever you are finished typing a command, press the Enter key to execute it. If you have completed the startup instructions correctly, you should be located inside of the `Start` folder. In this tutorial, the `Start` folder can be thought of as your home directory.
 
@@ -35,6 +26,7 @@ The **`ls`** (list) command lists the names of all of the files and subfolders i
 	History
 	Science
 	classSchedule
+	> 
 	
 In this tutorial, directories (folders) always begin with a capital letter, and text files always begin with a lowercase letter.
 #### Command #2
@@ -48,6 +40,7 @@ You can also use the `ls` command followed by the name of a folder inside your c
 	readingList
 	> pwd
 	/Users/guests/Documents
+	> 
 	
 As you can see from the example above, the user has viewed the contents of the `English` folder but is still located inside of the `Documents` folder.
 #### Command #3
@@ -59,13 +52,117 @@ The **`cd`** (change directory) command allows you to move from one directory in
 	> cd History
 	> pwd
 	/Users/guest/Documents/History
+	> 
 	
-Typing `cd ..` will move you to the _parent_ of your current directory: in other words, the folder that houses the folder you're currently in.
+As shown below, typing `cd ..` will move you to the _parent_ of your current directory: in other words, the folder that houses the folder you're currently in. Think of this command as your back button.
 
 	> cd ..
 	> pwd
 	/Users/guest/Documents
+	> 
 
-Typing only the `cd` command and hitting Enter will move you back into your home directory.
+Typing only the `cd` command and hitting Enter will move you back to your home directory. Think of this command as your home button.
+
+	> cd
+	> pwd
+	/Users/guest
+	> 
+	
 #### Command #4
-Use the `cd` command to move into the directory labelled `FolderA`. Then, using the commands you've learned so far, make sure you're in the right place and view the contents of the directory.
+Use the **`cd`** command to move into the directory labelled `GoHere`. Then, using the commands you've learned so far, make sure you're in the right place and view the contents of the directory.
+
+### `more`
+The **`more`** command allows you to view the contents of a text file. Typing `more` followed by the name of a file in your current directory will print its contents to the console. In the example below, the user navigates to the directory which contains a file called `myPoem` and prints it contents.
+
+	> cd Documents
+	> cd English
+	> cd Poetry
+	> ls
+	Drafts
+	myPoem
+	> more myPoem
+	Shall I compare thee 
+	to a summer's day? It's like:
+	apples, oranges.
+	> 
+	
+#### Command #5
+Use the **`more`** command to view the contents of the file entitled `readMe`.
+
+### `grep`
+The **`grep`** command allows you to search a file to see if it contains a certain word. Typing `grep`, followed by the word you wish to search for, followed by the name of the file you wish to search will print all of the lines in the file which contain your specified word. In the example below, the user searches for the word `apples` in the file `myPoem`.
+	
+	> grep apples myPoem
+	apples, oranges.
+	> 
+	
+#### Command #6
+Use the **`grep`** command to search for the word `foobar` in the file `searchMe`. Then, use the commands you've learned so far to navigate back to your home directory. 
+
+### `mkdir`
+The **`mkdir`** command allows you to create new directories. In the example below, the user creates a directory called `Haikus`. Their current folder now houses the folder they created.
+
+	> mkdir Haikus
+	> ls
+	Drafts
+	Haikus
+	myPoem
+	>
+	
+#### Command #7
+Use the **`mkdir`** command to create a directory called `NewFolder`. Then, using the commands you've learned so far, list the contents of your current directory to make sure your new folder was created.
+
+### `mv`
+The **`mv`** command has two functions: renaming files or directories and moving them from one place to another. To rename a file or directory, we type `mv`, followed by the name of the file or directory, followed by what we wish to rename it to. In the exammple below, the user uses the `mv` command to change the name of `myPoem` to `myHaiku`.
+
+	> mv myPoem myHaiku
+	> ls
+	Drafts
+	Haikus
+	myHaiku
+	>
+	
+When renaming files in particular, be careful not to choose the name of a file that already exists. If you do, that file will be overwritten. The same doesn't apply to directories, as we will learn below.
+#### Command #8
+Use the **`mv`** command to change the name of the file `renameMe` to `moveMe`. Then, list the contents of your current directory to make sure you exectued the command correctly.
+
+The second function of the `mv` command is to move a file or directory into a different directory. To do this, we type `mv`, followed by the name of the file or directory we wish to move, followed by the name of the directory we wish to move it to. In the example below, the user moves `myHaiku` into the `Haikus` folder.
+
+	> mv myHaiku Haikus
+	> ls Haikus
+	myHaiku
+	>
+	
+#### Command #9
+Use the **`mv`** command to move the file `moveMe` into `NewFolder`. Without navigating there, list the contents of `NewFolder` to be sure it worked.
+
+### `rm`
+The **`rm`** command is used to delete files. In the example below, the user navigates into the `Drafts` folder and deletes the file `poemRoughDraft'. Since the `Drafts` folder is now empty, `ls` returns nothing.
+	
+	> cd Drafts
+	> ls
+	poemRoughDraft
+	> rm poemRoughDraft
+	> ls
+	> 
+
+#### Command #10
+Using the commands you've learned so far, navigate to the directory DeleteMe and list its contents. You should see a file named `removeMe`. Use the **`rm`** command to delete it. List the contents of your current directory to verify that it is empty.
+
+### `rmdir`
+The **`rmdir`** command is used to delete empty directories. If the directory you are trying to delete contains any files or subfolders, the command will not work until its contents are deleted. In the example below, the user navigates from the now-empty `Drafts` folder back to its parent directory, then deletes the `Drafts` folder.
+
+	> cd ..
+	> ls
+	Drafts
+	Haikus
+	> rmdir Drafts
+	> ls
+	Haikus
+	>
+
+#### Command #11
+Using the commands you've learned so far, navigate back to your home directory. Then, use the **`rmdir`** command to delete it. Finally, list the contents of your current directory to verify that `DeleteMe` no longer exists.
+
+### Congratulations!
+You have now completed the tutorial. Type the command `exit` to exit the program and proceed to the next step of this study.
