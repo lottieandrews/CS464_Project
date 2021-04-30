@@ -6,6 +6,8 @@ public abstract class FileNavigator {
     protected final Directory ROOT_DIR;
     protected Directory currentDir;
 
+    int moveCounter = 0;
+
     public FileNavigator() {
         this.ROOT_DIR = new Directory();
         this.currentDir = this.ROOT_DIR;
@@ -24,6 +26,14 @@ public abstract class FileNavigator {
         if (validateName(dirName, new String[]{"Directory"})) {
             currentDir = currentDir.getSubDir(dirName);
         }
+        if (dirName.equals("Rooms")){
+            System.out.println("Good work! Now use the ls command to look at your options " + 
+            "and the cd command again to choose which room you'd like to investigate first. ");
+        }
+        if (dirName.equals("Ballroom") || dirName.equals("Billiard_Room") || dirName.equals("Conservatory") || dirName.equals("Dining_Room") || dirName.equals("Hall") || dirName.equals("Kitchen") || dirName.equals("Library") || dirName.equals("Lounge") || dirName.equals("Study")){
+            System.out.println("You're in the " + dirName + "! Use the ls command to list the clues hidden here. Use the more command to read what the clues contain.");
+        }
+        
     }
 
     public void grep(String word, String fileName) {
@@ -80,12 +90,16 @@ public abstract class FileNavigator {
         else {
             currentDir.addChild(new Directory(dirName));
         }
+        if (dirName.equals("Notebook")){
+            System.out.println("Great! Now you are ready to start looking for clues! Use the cd command to enter the 'Rooms'.");
+        }
     }
 
     public void more(String fileName) {
         if (validateName(fileName, new String[]{"File"})) {
             System.out.println(currentDir.getFile(fileName).getFileText());
         }
+        System.out.println("You found a clue! Use the mv to rename the clue to something that's easier to remember (i.e., 'NotWrench') then use the mv command again to move it to your Notebook for safe keeping.");
     }
 
     public void mv(String name1, String name2) {
@@ -114,6 +128,10 @@ public abstract class FileNavigator {
                 else if (getType(name2) == "Directory") { // Move file to directory
                         currentDir.getSubDir(name2).addChild(currentDir.getFile(name1));
                         currentDir.remove(name1);
+                        moveCounter++;
+                        if(moveCounter >= 2){
+                            System.out.println("You've found all the clues in this room! Use the cd command to move back to the 'Rooms' directory");
+                        }
                 }
                 else { // Rename file
                     currentDir.getFile(name1).setName(name2);
