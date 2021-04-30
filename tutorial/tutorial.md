@@ -137,7 +137,7 @@ The **`mv`** command has two functions: renaming files or directories and moving
 	myHaiku
 	>
 	
-When renaming files in particular, be careful not to choose the name of a file that already exists. If you do, that file will be overwritten. The same doesn't apply to directories, as we will learn below.
+When renaming files in particular, be careful not to choose the name of a file that already exists as your new filename. If you do, that file will be overwritten. The same doesn't apply to directories, as we will learn below.
 
 ### Command #8
 Use the **`mv`** command to change the name of the file `renameMe` to `moveMe`. Then, list the contents of your current directory to make sure you exectued the command correctly.
