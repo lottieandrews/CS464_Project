@@ -114,9 +114,9 @@ public class GroceryList {
                 vegetables.addChild(carrot);
                 vegetables.addChild(cucumber);
     }
-    public static void main(String[] args) {
+    /*public static void main(String[] args) {
         GroceryList gl = new GroceryList();
         Terminal tr = new Terminal(gl.gl);
         tr.launch();
-    }
+    }*/
 }
