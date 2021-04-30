@@ -184,7 +184,7 @@ The **`rmdir`** command is used to delete empty directories. If the directory yo
 	>
 
 ### Command #11
-Using the commands you've learned so far, navigate back to your home directory. Then, use the **`rmdir`** command to delete it. Finally, list the contents of your current directory to verify that `DeleteMe` no longer exists.
+Using the commands you've learned so far, navigate back to your home directory. Then, use the **`rmdir`** command to delete the directory `DeleteMe`. Finally, list the contents of your current directory to verify that `DeleteMe` no longer exists.
 
 <br/>
 
