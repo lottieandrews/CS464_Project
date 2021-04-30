@@ -15,8 +15,10 @@ The **`pwd`** (print working directory) command tells you where you are within a
 	> 
 	
 Use this command whenever you are unsure where you are located within the file system. In the terminal used in this tutorial, the `pwd` command used will show only the name of the folder you are currently located in. The rest of the file path will be hidden.
-#### Command #1
+### Command #1
 Type the **`pwd`** command to find out your current location within your filesystem. Whenever you are finished typing a command, press the Enter key to execute it. If you have completed the startup instructions correctly, you should be located inside of the `Start` folder. In this tutorial, the `Start` folder can be thought of as your home directory.
+
+<br/>
 
 ### `ls`
 The **`ls`** (list) command lists the names of all of the files and subfolders inside of the current directory. 
@@ -29,8 +31,10 @@ The **`ls`** (list) command lists the names of all of the files and subfolders i
 	> 
 	
 In this tutorial, directories (folders) always begin with a capital letter, and text files always begin with a lowercase letter.
-#### Command #2
+### Command #2
 Type the **`ls`** command to see what is contained in the `Start` folder.
+
+<br/>
 
 You can also use the `ls` command followed by the name of a folder inside your current directory to view what is inside of that directory without changing your location within the file system.
 
@@ -43,8 +47,11 @@ You can also use the `ls` command followed by the name of a folder inside your c
 	> 
 	
 As you can see from the example above, the user has viewed the contents of the `English` folder but is still located inside of the `Documents` folder.
-#### Command #3
+
+### Command #3
 Type the **`ls`** command followed by the name of a folder inside your current directory in order to view its contents.
+
+<br/>
 
 ### `cd`
 The **`cd`** (change directory) command allows you to move from one directory into another. As the example below shows, `cd` followed by the name of a folder within your current directory will move you into that folder.
@@ -68,8 +75,10 @@ Typing only the `cd` command and hitting Enter will move you back to your home d
 	/Users/guest
 	> 
 	
-#### Command #4
+### Command #4
 Use the **`cd`** command to move into the directory labelled `GoHere`. Then, using the commands you've learned so far, make sure you're in the right place and view the contents of the directory.
+
+<br/>
 
 ### `more`
 The **`more`** command allows you to view the contents of a text file. Typing `more` followed by the name of a file in your current directory will print its contents to the console. In the example below, the user navigates to the directory which contains a file called `myPoem` and prints it contents.
@@ -86,8 +95,10 @@ The **`more`** command allows you to view the contents of a text file. Typing `m
 	apples, oranges.
 	> 
 	
-#### Command #5
+### Command #5
 Use the **`more`** command to view the contents of the file entitled `readMe`.
+
+<br/>
 
 ### `grep`
 The **`grep`** command allows you to search a file to see if it contains a certain word. Typing `grep`, followed by the word you wish to search for, followed by the name of the file you wish to search will print all of the lines in the file which contain your specified word. In the example below, the user searches for the word `apples` in the file `myPoem`.
@@ -96,8 +107,10 @@ The **`grep`** command allows you to search a file to see if it contains a certa
 	apples, oranges.
 	> 
 	
-#### Command #6
+### Command #6
 Use the **`grep`** command to search for the word `foobar` in the file `searchMe`. Then, use the commands you've learned so far to navigate back to your home directory. 
+
+<br/>
 
 ### `mkdir`
 The **`mkdir`** command allows you to create new directories. In the example below, the user creates a directory called `Haikus`. Their current folder now houses the folder they created.
@@ -109,8 +122,10 @@ The **`mkdir`** command allows you to create new directories. In the example bel
 	myPoem
 	>
 	
-#### Command #7
+### Command #7
 Use the **`mkdir`** command to create a directory called `NewFolder`. Then, using the commands you've learned so far, list the contents of your current directory to make sure your new folder was created.
+
+<br/>
 
 ### `mv`
 The **`mv`** command has two functions: renaming files or directories and moving them from one place to another. To rename a file or directory, we type `mv`, followed by the name of the file or directory, followed by what we wish to rename it to. In the exammple below, the user uses the `mv` command to change the name of `myPoem` to `myHaiku`.
@@ -123,8 +138,11 @@ The **`mv`** command has two functions: renaming files or directories and moving
 	>
 	
 When renaming files in particular, be careful not to choose the name of a file that already exists. If you do, that file will be overwritten. The same doesn't apply to directories, as we will learn below.
-#### Command #8
+
+### Command #8
 Use the **`mv`** command to change the name of the file `renameMe` to `moveMe`. Then, list the contents of your current directory to make sure you exectued the command correctly.
+
+<br/>
 
 The second function of the `mv` command is to move a file or directory into a different directory. To do this, we type `mv`, followed by the name of the file or directory we wish to move, followed by the name of the directory we wish to move it to. In the example below, the user moves `myHaiku` into the `Haikus` folder.
 
@@ -133,8 +151,10 @@ The second function of the `mv` command is to move a file or directory into a di
 	myHaiku
 	>
 	
-#### Command #9
+### Command #9
 Use the **`mv`** command to move the file `moveMe` into `NewFolder`. Without navigating there, list the contents of `NewFolder` to be sure it worked.
+
+<br/>
 
 ### `rm`
 The **`rm`** command is used to delete files. In the example below, the user navigates into the `Drafts` folder and deletes the file `poemRoughDraft'. Since the `Drafts` folder is now empty, `ls` returns nothing.
@@ -146,8 +166,10 @@ The **`rm`** command is used to delete files. In the example below, the user nav
 	> ls
 	> 
 
-#### Command #10
+### Command #10
 Using the commands you've learned so far, navigate to the directory DeleteMe and list its contents. You should see a file named `removeMe`. Use the **`rm`** command to delete it. List the contents of your current directory to verify that it is empty.
+
+<br/>
 
 ### `rmdir`
 The **`rmdir`** command is used to delete empty directories. If the directory you are trying to delete contains any files or subfolders, the command will not work until its contents are deleted. In the example below, the user navigates from the now-empty `Drafts` folder back to its parent directory, then deletes the `Drafts` folder.
@@ -161,8 +183,10 @@ The **`rmdir`** command is used to delete empty directories. If the directory yo
 	Haikus
 	>
 
-#### Command #11
+### Command #11
 Using the commands you've learned so far, navigate back to your home directory. Then, use the **`rmdir`** command to delete it. Finally, list the contents of your current directory to verify that `DeleteMe` no longer exists.
+
+<br/>
 
 ### Congratulations!
 You have now completed the tutorial. Type the command `exit` to exit the program and proceed to the next step of this study.
