@@ -57,7 +57,6 @@ public abstract class FileNavigator {
             String[] fileText = getLines(currentDir.getFile(fileName).getFileText());
             for (String line : fileText) {
                 if (line.contains(word)) {
-                    //System.out.println(line);
                     switch(word){
                         case "Mustard":
                             System.out.println("Great work! You found the murderer!");
@@ -70,6 +69,9 @@ public abstract class FileNavigator {
                         case "revolver":
                             System.out.println("Excellent! You found the murder weapon!");
                             grepCounter++;
+                            break;
+                        default:
+                            System.out.println(line);
                             break;
                     }
                 }
