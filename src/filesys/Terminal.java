@@ -1,14 +1,10 @@
 package filesys;
 
-import filesys.Directory;
-import filesys.FileNavigator;
-
 import java.util.Arrays;
 import java.util.Scanner;
 
 public class Terminal extends FileNavigator {
     public final String USER;
-    //private Scanner scnr = new Scanner(System.in);
 
     public Terminal() {
         super();
@@ -73,7 +69,8 @@ public class Terminal extends FileNavigator {
                 else if (args.length == 2) { man(args[1]); }
                 break;
             case "mkdir":
-                if (validateNumArgs(args, 2, "mkdir")) { mkdir(args[1]); }
+                if (validateNumArgs(args, 2, "mkdir")) {
+                    mkdir(args[1]); }
                 break;
             case "more":
                 if (validateNumArgs(args, 2, "more")) { more(args[1]); }

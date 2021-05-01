@@ -1,12 +1,10 @@
 package filesys;
-import filesys.Directory;
-import filesys.File;
 
 import java.util.Arrays;
 
 public abstract class FileNavigator {
 
-    protected final Directory ROOT_DIR;
+    protected Directory ROOT_DIR; // Should be treated as final, but Clue has to change it.
     protected Directory currentDir;
 
     int moveCounter = 0;
@@ -32,21 +30,21 @@ public abstract class FileNavigator {
         if (validateName(dirName, new String[]{"Directory"})) {
             currentDir = currentDir.getSubDir(dirName);
             if (currentDir.getName().equals("Rooms") && !isFirstTime){
-                System.out.println("You're back in the 'Rooms' directory. Use the rmdir command to remove the empty room and choose another room to investigate. Remember to use the ls command to see which rooms can be searched.");
+                System.out.println("You're back in the 'Rooms' directory. Use the rmdir command to remove the empty room, then choose another room to investigate. Remember to use the ls command to see which rooms can be searched.");
             }
         }
         if (dirName.equals("Rooms") && isFirstTime){
-            System.out.println("Good work! Now use the ls command to look at your options " + 
+            System.out.println("Good work! Now use the ls command to look at your options " +
             "and the cd command again to choose which room you'd like to investigate first. ");
             isFirstTime = false;
         }
-        if (dirName.equals("Ballroom") || dirName.equals("Billiard_Room") || dirName.equals("Conservatory") || dirName.equals("Dining_Room") || dirName.equals("Hall") || dirName.equals("Kitchen") || dirName.equals("Library") || dirName.equals("Lounge") || dirName.equals("Study")){
+        if (dirName.equals("Ballroom") || dirName.equals("BilliardRoom") || dirName.equals("Conservatory") || dirName.equals("DiningRoom") || dirName.equals("Hall") || dirName.equals("Kitchen") || dirName.equals("Library") || dirName.equals("Lounge") || dirName.equals("Study")){
             System.out.println("You're in the " + dirName + "! Use the ls command to list the clues hidden here. Use the more command to read what the clues contain.");
         }
         if (dirName.equals("Notebook")){
             System.out.println("Now that you have all the evidence it's time to piece together the murder scene. Using the process of elimination, determine the murder weapon, scene of the crime, and prime suspect to solve this case!");
             System.out.println("Possible murder weapons: Wrench, Lead Pipe, Revolver, Knife, Rope, Candlestick");
-            System.out.println("Possible perpetrators: Miss Scarlett, Reverand Green, Professor Plum, Colonel Mustard, Mrs. Peacock, Mrs. White");
+            System.out.println("Possible perpetrators: Miss Scarlett, Reverend Green, Professor Plum, Colonel Mustard, Mrs. Peacock, Mrs. White");
             System.out.println("Possible crime scenes: Study, Kitchen, Hall, Conservatory, Lounge, Ballroom, Dining Room, Library, Billiard Room");
         }
         
