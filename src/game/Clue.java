@@ -2,7 +2,7 @@ package game;
 import filesys.*;
 
 public class Clue {
-    public Directory notebook = new Directory("Notebook");
+    public Directory clue = new Directory("Clue");
         public File confidential = new File("CONFIDENTIAL", "Colonel Mustard in the study with the revolver!");
         public Directory rooms = new Directory("Rooms");
             public Directory study = new Directory("Study");
@@ -34,8 +34,8 @@ public class Clue {
                 public File billiardClue2 = new File("billiardClue2", "Seriously? Obviously the murder weapon wasn't the rope!");
 
     public Clue() {
-        notebook.addChild(confidential);
-        notebook.addChild(rooms);
+        clue.addChild(confidential);
+        clue.addChild(rooms);
             rooms.addChild(study);
                 study.addChild(studyClue1);
                 study.addChild(studyClue2);
@@ -73,7 +73,7 @@ public class Clue {
         "exit command when you're finished to exit the game.");
         System.out.println("\nStart by creating a directory called 'Notebook' to store your clues.\n");
         Clue clue = new Clue();
-        Terminal tr = new Terminal(clue.notebook);
+        Terminal tr = new Terminal(clue.clue);
         tr.launch();
     }
 }
