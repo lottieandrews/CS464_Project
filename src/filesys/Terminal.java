@@ -8,7 +8,7 @@ import java.util.Scanner;
 
 public class Terminal extends FileNavigator {
     public final String USER;
-    //private Scanner scnr = new Scanner(System.in);
+    public final Manual MANUAL = new Manual();
 
     public Terminal() {
         super();
@@ -53,6 +53,9 @@ public class Terminal extends FileNavigator {
                     printError("cd: extra operand `" + args[2] + "`", "cd");
                 }
                 break;
+            case "help":
+                    MANUAL.man();
+                break;
             case "grep":
                 if (args.length > 3) {
                     grep(String.join(" ", Arrays.copyOfRange(args, 1, args.length - 2)), args[args.length-1]);
@@ -69,8 +72,8 @@ public class Terminal extends FileNavigator {
                 }
                 break;
             case "man":
-                if (args.length == 1) { man(); }
-                else if (args.length == 2) { man(args[1]); }
+                if (args.length == 1) { MANUAL.man(); }
+                else if (args.length == 2) { MANUAL.man(args[1]); }
                 break;
             case "mkdir":
                 if (validateNumArgs(args, 2, "mkdir")) { mkdir(args[1]); }

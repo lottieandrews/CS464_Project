@@ -106,18 +106,6 @@ public abstract class FileNavigator {
         }
     }
 
-    public void man() {
-        System.out.println("\nMAN: ACCESS THE MANUAL\n\n" +
-                "Command Input: \n" +
-                "man [COMMAND]\n\n" +
-                "Use the `man` command followed by a command name to access information about that command.\n" +
-                "Supported commands: cd, exit, grep, ls, mkdir, more, mv, pwd, rm\n");
-    }
-
-    public void man(String command) {
-        System.out.println("This manual entry hasn't been written yet!");
-    }
-
     public void mkdir(String dirName) {
         if (getType(dirName) != null) {
             printError(dirName + ": File or directory already exists");
