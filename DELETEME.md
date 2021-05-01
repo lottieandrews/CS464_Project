@@ -1,4 +1,0 @@
-- Teach them pwd, ls, and cd in intro
-- Move clues to Notebook automatically
-- Add red herrings to teach rm command
-- Tell users to move through rooms in chronological order
