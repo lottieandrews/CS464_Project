@@ -140,7 +140,7 @@ public abstract class FileNavigator {
     public void mv(String name1, String name2) {
         if (validateName(name1, new String[]{"File", "Directory"})) {
             if (getType(name1) == "Directory") {
-                if (name1.equals("..") || name1.equals(".")) { // Move current or parent directory somewhere else (bad)
+                if (name1.equals("..") || name1.equals(".") || name1.equals("~")) { // Move current or parent directory somewhere else (bad)
                     printError("Rename " + name1 + " to " + name2 + ": Invalid argument");
                 }
                 if (getType(name2) == "File") { // Move directory to file (bad)
@@ -186,7 +186,7 @@ public abstract class FileNavigator {
     }
 
     public void rmdir(String dirName) {
-        if (dirName.equals(".") || dirName.equals("..")) {
+        if (dirName.equals(".") || dirName.equals("..") || dirName.equals("~")) {
             printError("rmdir: " + dirName + ": Operation not permitted");
         }
         else if(validateName(dirName, new String[]{"Directory"})) {
