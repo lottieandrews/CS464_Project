@@ -59,7 +59,7 @@ public abstract class Node {
                 return (Directory) current;
             }
         }
-        return (Directory) current; //For our purposes, this will never be reached
+        return (Directory) current; // This should never be reached
     }
 
     // This method is just here so the ArrayList.toString() method will work for print debugging

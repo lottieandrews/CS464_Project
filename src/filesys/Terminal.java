@@ -69,8 +69,7 @@ public class Terminal extends FileNavigator {
                 else if (args.length == 2) { man(args[1]); }
                 break;
             case "mkdir":
-                if (validateNumArgs(args, 2, "mkdir")) {
-                    mkdir(args[1]); }
+                if (validateNumArgs(args, 2, "mkdir")) { mkdir(args[1]); }
                 break;
             case "more":
                 if (validateNumArgs(args, 2, "more")) { more(args[1]); }
