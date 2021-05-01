@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 public abstract class FileNavigator {
 
-    protected Directory ROOT_DIR; // Should be treated as final, but Clue has to change it.
+    protected final Directory ROOT_DIR; // Should be treated as final, but Clue has to change it.
     protected Directory currentDir;
 
     int moveCounter = 0;
