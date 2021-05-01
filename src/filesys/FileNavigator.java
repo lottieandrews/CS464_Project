@@ -124,14 +124,14 @@ public abstract class FileNavigator {
             currentDir.addChild(new Directory(dirName));
         }
         if (dirName.equals("Notebook")){
-            System.out.println("Great! Now you are ready to start looking for clues! Use the cd command to enter the 'Rooms'.");
+            System.out.println("Great! Now you are ready to start looking for clues! Use the command 'cd Rooms' to enter the rooms.");
         }
     }
 
     public void more(String fileName) {
         if (validateName(fileName, new String[]{"File"}) && !fileName.equals("CONFIDENTIAL")) {
             System.out.println(currentDir.getFile(fileName).getFileText());
-            System.out.println("You found a clue! Use the mv to rename the clue to something that's easier to remember (i.e., 'NotWrench') then use the mv command again to move it to your Notebook for safe keeping.");
+            System.out.println("\nYou found a clue! Use the mv command to rename the clue to something that's easier to remember (e.g., 'mv ballroomClue notDiningRoom') then type the command 'mv ~/Notebook' to move it to your Notebook for safe keeping.");
         } else {
             System.out.println("Hey! No peeking!");
         }
@@ -165,7 +165,7 @@ public abstract class FileNavigator {
                         currentDir.remove(name1);
                         moveCounter++;
                         if(moveCounter >= 2){
-                            System.out.println("You've found all the clues in this room! Use the cd command to move back to the 'Rooms' directory");
+                            System.out.println("You've found all the clues in this room! Use the command 'cd ..' to move back to your previous directory.");
                         }
                 }
                 else { // Rename file
@@ -197,7 +197,7 @@ public abstract class FileNavigator {
                 currentDir.remove(dirName);
                 rmdirCounter++;
                 if(rmdirCounter >= 9){
-                    System.out.println("You've found all the clues! Use the cd command to back to your Notebook to sift through your notes and solve this murder!");
+                    System.out.println("You've found all the clues! Use the 'cd ~' command to go back to your home directory, then navigate to your Notebook to sift through your notes and solve this murder!");
                 }
             }
         }

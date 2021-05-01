@@ -71,7 +71,7 @@ public class Clue {
         "investigate the clues hidden in each room and find out who dunnit, where they dunnit, and what they dunnit with! " + 
         "Feel free to use the man command if you get stuck on how to properly use a command and need some help. Use the " +
         "exit command when you're finished to exit the game.");
-        System.out.println("\nStart by creating a directory called 'Notebook' to store your clues.\n");
+        System.out.println("\nStart by creating a directory called 'Notebook' to store your clues. Do this by typing 'mkdir Notebook'.\n");
         Clue clue = new Clue();
         Terminal tr = new Terminal(clue.clue);
         tr.launch();
