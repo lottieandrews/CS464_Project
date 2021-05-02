@@ -57,7 +57,7 @@ public abstract class FileNavigator {
                     }
                 }
                 if (currentRoom.equals("Notebook")) {
-                    System.out.println("Now that you have all the evidence it's time to piece together the murder scene. Using the process of elimination, determine the murder weapon, scene of the crime, and prime suspect to solve this case!");
+                    System.out.println("Now that you have all the evidence it's time to piece together the murder scene. Using the process of elimination, determine the murder weapon, scene of the crime, and prime suspect to solve this case! Once you have your hunch, navigate back to the main 'Clue' directory. Once there you will use the grep command to compare keywords (i.e. knife) in your answer to the answer in the CONFIDENTIAL folder. Guess all three correctly and you win the game!");
                     System.out.println("Possible murder weapons: Wrench, Lead Pipe, Revolver, Knife, Rope, Candlestick");
                     System.out.println("Possible perpetrators: Miss Scarlett, Reverend Green, Professor Plum, Colonel Mustard, Mrs. Peacock, Mrs. White");
                     System.out.println("Possible crime scenes: Study, Kitchen, Hall, Conservatory, Lounge, Ballroom, Dining Room, Library, Billiard Room");
@@ -198,11 +198,18 @@ public abstract class FileNavigator {
                     currentDir.getFile(name1).setName(name2);
                 }
                 else if (getType(name2) == "Directory") { // Move file to directory
-                        currentDir.getSubDir(name2).addChild(currentDir.getFile(name1));
-                        currentDir.remove(name1);
-                        if(clueGame && currentDir.isEmpty()){
+                    if (clueGame) {
+                        if (name2.equals("~/Notebook")) { // Move file to notebook directory
+                            ROOT_DIR.getSubDir("Notebook").addChild(currentDir.getFile(name1));
+                        }
+                        if (currentDir.isEmpty()) {
                             System.out.println("You've found all the clues in this room! Use the command `cd ..` to move back to your previous directory.");
                         }
+                    }
+                    else {
+                        currentDir.getSubDir(name2).addChild(currentDir.getFile(name1));
+                    }
+                    currentDir.remove(name1);
                 }
                 else { // Rename file
                     currentDir.getFile(name1).setName(name2);
