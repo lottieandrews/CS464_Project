@@ -72,11 +72,15 @@ public class Clue {
     }
 
     public static void main(String[] args){
-        System.out.println("\nWelcome to Bash Detective: The Clue-Inspired Terminal Game!");
-        System.out.println("\nUse the cd, exit, grep, ls, mkdir, more, mv, pwd, and rm commands to " +
-        "investigate the clues hidden in each room and find out who dunnit, where they dunnit, and what they dunnit with! " + 
-        "Feel free to use the man command if you get stuck on how to properly use a command and need some help. Use the " +
-        "exit command when you're finished to exit the game.");
+        System.out.println("Welcome to Bash Detective: The Clue-Inspired Terminal Game!");
+        System.out.println("Use common terminal commands to " + "investigate the clues hidden in each room and find out who dunnit, where they dunnit, and what they dunnit with!");
+        System.out.println("\nHere are a few basic commands to get you started:");
+        System.out.println("- Use the `pwd` command to figure out where you are located.");
+        System.out.println("- Use the `cd` command followed by the name of a directory to move from room to room.");
+        System.out.println("- Use the command `cd ..` to move back to your previous room.");
+        System.out.println("- Use the command `cd ~` to return to this room.");
+        System.out.println("- Use the `ls` command to see what's in a room.");
+        System.out.println("- Feel free to use the `man` or `help` commands at any time if you get stuck on how to properly use a command and need some help.");
         System.out.println("\nStart by creating a directory called 'Notebook' to store your clues. Do this by typing 'mkdir Notebook'.\n");
         Clue clue = new Clue();
         Terminal tr = new Terminal(clue.clue, "detective@Bash-Detective"); // Don't change this USER field or everything will break!!!

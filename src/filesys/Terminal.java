@@ -54,7 +54,7 @@ public class Terminal extends FileNavigator {
                 }
                 break;
             case "help":
-                    MANUAL.man();
+                    System.out.println("Type `man` to access the manual.");
                 break;
             case "grep":
                 if (args.length > 3) {
