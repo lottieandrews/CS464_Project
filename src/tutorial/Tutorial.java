@@ -10,11 +10,10 @@ public class Tutorial {
         public File readMe = new File("readMe",
                 "This file contains some text.");
         public File searchMe = new File("searchMe",
-                    """
-                            This line contains the word 'foobar'.
-                            This line doesn't.
-                            Programmers use the word 'foobar' when they don't feel like coming up with real names for their variables.
-                            Don't ask me why.""");
+                "This line contains the word 'foobar'.\n" +
+                "This line doesn't.\n" +
+                "Programmers use the word 'foobar' when they don't feel like coming up with real names for their variables.\n" +
+                "Don't ask me why.");
         public File renameMe = new File("renameMe",
                 "Use this file to practice the mv command.");
         //Directory NewFolder will be created
