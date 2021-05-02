@@ -1,8 +1,7 @@
 
-import Directory;
-import File;
-import Terminal;
-import filesys.*;
+import filesys.Directory;
+import filesys.File;
+import filesys.Terminal;
 
 public class Clue {
     public Directory clue = new Directory("Clue");

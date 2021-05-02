@@ -1,5 +1,4 @@
-
-
+package filesys;
 
 import java.util.Arrays;
 
@@ -154,7 +153,7 @@ public abstract class FileNavigator {
                     //currentDir.getSubDir(name2).addChild(currentDir.getFile(name1));
                     currentDir.remove(name1);
                     moveCounter++;
-                    if(moveCounter >= 2){
+                    if(moveCounter == 2){
                         System.out.println("You've found all the clues in this room! Use the cd command to move back to the 'Rooms' directory");
                     }
                 }
