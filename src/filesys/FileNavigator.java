@@ -30,20 +30,21 @@ public abstract class FileNavigator {
 
     public void cd(String dirName) {
         if (validateName(dirName, new String[]{"Directory"})) {
-            if (clueGame && ROOT_DIR.getSubDir("Notebook") == null) {
-                printError("You must create your Notebook before you can begin the game.", "mkdir");
-            }
-            else {
                 currentDir = currentDir.getSubDir(dirName);
                 errorCounter = 0;
-            }
             if (clueGame) {
                 String currentRoom = currentDir.getName();
                 if (currentRoom.equals("Rooms")) {
                     if (roomsVisitCounter == 0) {
                         roomsVisitCounter++;
-                        System.out.println("Good work! You can use the `ls` command to look at your options " +
-                                "and the `cd` command to move from room to room. Try investigating the Ballroom first. ");
+                        System.out.println("Good work! Now that you're ready to start looking for clues, here are a few basic commands to get you started:");
+                        System.out.println("- Use the `pwd` command to figure out where you are located.");
+                        System.out.println("- Use the `cd` command followed by the name of a directory to move from room to room.");
+                        System.out.println("- Use the command `cd ..` to move back to your previous room.");
+                        System.out.println("- Use the command `cd ~` to return to this room.");
+                        System.out.println("- Use the `ls` command to see what's in a room.");
+                        System.out.println("- Feel free to use the `man` or `help` commands at any time if you get stuck on how to properly use a command and need some help.");
+                        System.out.println("\nTry investigating the Ballroom first.");
                     }
                     else {
                         System.out.println("You're back in the 'Rooms' directory. Use the `rmdir` command to remove the empty room, then choose another room to investigate. Remember to use the `ls` command to see which rooms can be searched.");
@@ -164,7 +165,7 @@ public abstract class FileNavigator {
             currentDir.addChild(new Directory(dirName));
         }
         if (clueGame && dirName.equals("Notebook")){
-            System.out.println("Great! Now you are ready to start looking for clues! Use the command 'cd Rooms' to enter the rooms.");
+            System.out.println("Great! Now you are ready to start looking for clues! Use the command `cd Rooms` to enter the rooms.");
         }
     }
 

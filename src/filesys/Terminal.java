@@ -45,60 +45,86 @@ public class Terminal extends FileNavigator {
 
     public void processUserInput(String in) {
         String[] args = in.trim().split(" ");
-        switch(args[0]) {
-            case "cd":
-                if (args.length == 1) { cd(); }
-                else if (args.length == 2) { cd(args[1]); }
-                else {
-                    printError("cd: extra operand `" + args[2] + "`", "cd");
-                }
-                break;
-            case "help":
+        if (clueGame && ROOT_DIR.getSubDir("Notebook") == null) {
+            if (!args[0].equals("mkdir")) {
+                printError("You must create your Notebook before you can begin the game.", "mkdir");
+            } else if (!args[1].equals("Notebook")) {
+                printError("Oops! Check your spelling. You're trying to make a directory called `Notebook`.", "mkdir");
+            }
+        } else {
+            switch (args[0]) {
+                case "cd":
+                    if (args.length == 1) {
+                        cd();
+                    } else if (args.length == 2) {
+                        cd(args[1]);
+                    } else {
+                        printError("cd: extra operand `" + args[2] + "`", "cd");
+                    }
+                    break;
+                case "help":
                     System.out.println("Type `man` to access the manual.");
-                break;
-            case "grep":
-                if (args.length > 3) {
-                    grep(String.join(" ", Arrays.copyOfRange(args, 1, args.length - 2)), args[args.length-1]);
-                }
-                else if (validateNumArgs(args, 3, "grep")) {
-                    grep(args[1], args[2]);
-                }
-                break;
-            case "ls":
-                if (args.length == 1) { ls(); }
-                else if (args.length == 2) { ls(args[1]); }
-                else {
-                    printError("ls: extra operand `" + args[2] + "`", "ls");
-                }
-                break;
-            case "man":
-                if (args.length == 1) { MANUAL.man(); }
-                else if (args.length == 2) { MANUAL.man(args[1]); }
-                break;
-            case "mkdir":
-                if (validateNumArgs(args, 2, "mkdir")) { mkdir(args[1]); }
-                break;
-            case "more":
-                if (validateNumArgs(args, 2, "more")) { more(args[1]); }
-                break;
-            case "mv":
-                if (validateNumArgs(args, 3, "mv")) { mv(args[1], args[2]); }
-                break;
-            case "pwd":
-                if (validateNumArgs(args, 1, "pwd")) { pwd(); }
-                break;
-            case "rm":
-                if (validateNumArgs(args, 2, "rm")) { rm(args[1]); }
-                break;
-            case "rmdir":
-                if (validateNumArgs(args, 2, "rmdir")) { rmdir(args[1]); }
-                break;
-            case "":
-            case "exit":
-                break;
-            default:
-                printError("Command not found: `" + args[0] + "`", "man");
-                break;
+                    break;
+                case "grep":
+                    if (args.length > 3) {
+                        grep(String.join(" ", Arrays.copyOfRange(args, 1, args.length - 2)), args[args.length - 1]);
+                    } else if (validateNumArgs(args, 3, "grep")) {
+                        grep(args[1], args[2]);
+                    }
+                    break;
+                case "ls":
+                    if (args.length == 1) {
+                        ls();
+                    } else if (args.length == 2) {
+                        ls(args[1]);
+                    } else {
+                        printError("ls: extra operand `" + args[2] + "`", "ls");
+                    }
+                    break;
+                case "man":
+                    if (args.length == 1) {
+                        MANUAL.man();
+                    } else if (args.length == 2) {
+                        MANUAL.man(args[1]);
+                    }
+                    break;
+                case "mkdir":
+                    if (validateNumArgs(args, 2, "mkdir")) {
+                        mkdir(args[1]);
+                    }
+                    break;
+                case "more":
+                    if (validateNumArgs(args, 2, "more")) {
+                        more(args[1]);
+                    }
+                    break;
+                case "mv":
+                    if (validateNumArgs(args, 3, "mv")) {
+                        mv(args[1], args[2]);
+                    }
+                    break;
+                case "pwd":
+                    if (validateNumArgs(args, 1, "pwd")) {
+                        pwd();
+                    }
+                    break;
+                case "rm":
+                    if (validateNumArgs(args, 2, "rm")) {
+                        rm(args[1]);
+                    }
+                    break;
+                case "rmdir":
+                    if (validateNumArgs(args, 2, "rmdir")) {
+                        rmdir(args[1]);
+                    }
+                    break;
+                case "":
+                case "exit":
+                    break;
+                default:
+                    printError("Command not found: `" + args[0] + "`", "man");
+                    break;
+            }
         }
     }
 
