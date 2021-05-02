@@ -72,6 +72,7 @@ public class Terminal extends FileNavigator {
                 }
                 break;
             case "man":
+                errorCounter = 0;
                 if (args.length == 1) { MANUAL.man(); }
                 else if (args.length == 2) { MANUAL.man(args[1]); }
                 break;
@@ -114,16 +115,6 @@ public class Terminal extends FileNavigator {
         else {
             printError(command + ": extra operand `" + args[validNum] + "`", command);
             return false;
-        }
-    }
-
-    private void printError(String errorMessage, String command) {
-        System.out.println(errorMessage);
-        if (command.equals("man")) {
-            System.out.println("Need help? Type the `man` command for more information.");
-        }
-        else {
-            System.out.println("Need help? Type the `man " + command + "` command for more information.");
         }
     }
 }

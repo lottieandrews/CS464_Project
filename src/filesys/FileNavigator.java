@@ -11,6 +11,7 @@ public abstract class FileNavigator {
     int roomsVisitCounter = 0;
     int rmdirCounter = 0;
     int grepCounter = 0;
+    int errorCounter = 0;
 
     public FileNavigator() {
         this.ROOT_DIR = new Directory();
@@ -120,7 +121,7 @@ public abstract class FileNavigator {
 
     public void mkdir(String dirName) {
         if (getType(dirName) != null) {
-            printError(dirName + ": File or directory already exists");
+            printError(dirName + ": File or directory already exists", "mkdir");
         }
         else {
             currentDir.addChild(new Directory(dirName));
@@ -148,10 +149,10 @@ public abstract class FileNavigator {
         if (validateName(name1, new String[]{"File", "Directory"})) {
             if (getType(name1) == "Directory") {
                 if (name1.equals("..") || name1.equals(".") || name1.equals("~")) { // Move current or parent directory somewhere else (bad)
-                    printError("Rename " + name1 + " to " + name2 + ": Invalid argument");
+                    printError("Rename " + name1 + " to " + name2 + ": Invalid argument", "mv");
                 }
                 if (getType(name2) == "File") { // Move directory to file (bad)
-                    printError("Rename " + name1 + " to " + name2 + ": " + name2 + " is not a directory");
+                    printError("Rename " + name1 + " to " + name2 + ": " + name2 + " is not a directory", "mv");
                 }
                 else if (getType(name2) == "Directory") { // Move directory into another directory
                     currentDir.getSubDir(name2).addChild(currentDir.getSubDir(name1));
@@ -198,11 +199,11 @@ public abstract class FileNavigator {
 
     public void rmdir(String dirName) {
         if (dirName.equals(".") || dirName.equals("..") || dirName.equals("~")) {
-            printError("rmdir: " + dirName + ": Operation not permitted");
+            printError("rmdir: " + dirName + ": Operation not permitted", "rmdir");
         }
         else if(validateName(dirName, new String[]{"Directory"})) {
             if (!currentDir.getSubDir(dirName).isEmpty()) {
-                printError(dirName + ": Directory not empty");
+                printError(dirName + ": Directory not empty", "rmdir");
             }
             else {
                 currentDir.remove(dirName);
@@ -235,22 +236,30 @@ public abstract class FileNavigator {
             if (Arrays.asList(validTypes).contains("Directory")) {
                 return true;
             }
-            printError(name + " is a directory");
+            printError(name + " is a directory", "man");
         }
         else if (getType(name) == "File") {
             if (Arrays.asList(validTypes).contains("File")) {
                 return true;
             }
-            printError(name + ": Not a directory");
+            printError(name + ": Not a directory", "man");
         }
         else {
-            printError(name + ": No such file or directory");
+            printError(name + ": No such file or directory", "man");
         }
         return false;
     }
 
     // We want to print to stdout and not stderr here because we're essentially treating this method as our exception catcher.
-    private void printError(String errorMessage) {
+    protected void printError(String errorMessage, String command) {
+        errorCounter++;
         System.out.println(errorMessage);
+        if (errorCounter >= 3) {
+            if (command.equals("man")) {
+                System.out.println("Need help? Type the `man` command for more information.");
+            } else {
+                System.out.println("Need help? Type `man " + command + "` for more information.");
+            }
+        }
     }
 }
