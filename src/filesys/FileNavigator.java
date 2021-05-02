@@ -41,7 +41,7 @@ public abstract class FileNavigator {
                         System.out.println("- Use the `pwd` command to figure out where you are located.");
                         System.out.println("- Use the `cd` command followed by the name of a directory to move from room to room.");
                         System.out.println("- Use the command `cd ..` to move back to your previous room.");
-                        System.out.println("- Use the command `cd ~` to return to this room.");
+                        System.out.println("- Use the command `cd ~` to return to your home directory.");
                         System.out.println("- Use the `ls` command to see what's in a room.");
                         System.out.println("- Feel free to use the `man` or `help` commands at any time if you get stuck on how to properly use a command and need some help.");
                         System.out.println("\nTry investigating the Ballroom first.");
