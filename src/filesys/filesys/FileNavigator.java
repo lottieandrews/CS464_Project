@@ -42,7 +42,7 @@ public abstract class FileNavigator {
             System.out.println("You're in the " + dirName + "! Use the ls command to list the clues hidden here. Use the more command to read what the clues contain.");
         }
         if (dirName.equals("Notebook")){
-            System.out.println("Now that you have all the evidence it's time to piece together the murder scene. Using the process of elimination, determine the murder weapon, scene of the crime, and prime suspect to solve this case!");
+            System.out.println("Now that you have all the evidence it's time to piece together the murder scene. Using the process of elimination, determine the murder weapon, scene of the crime, and prime suspect to solve this case! Once you have your hunch, navigate back to the main 'Clue' directory. Once there you will use the grep command to compare keywords (i.e. knife) in your answer to the answer in the CONFIDENTIAL folder. Guess all three correctly and you win the game!");
             System.out.println("Possible murder weapons: Wrench, Lead Pipe, Revolver, Knife, Rope, Candlestick");
             System.out.println("Possible perpetrators: Miss Scarlett, Reverend Green, Professor Plum, Colonel Mustard, Mrs. Peacock, Mrs. White");
             System.out.println("Possible crime scenes: Study, Kitchen, Hall, Conservatory, Lounge, Ballroom, Dining Room, Library, Billiard Room");
