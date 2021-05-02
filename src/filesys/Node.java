@@ -45,6 +45,9 @@ public abstract class Node {
     }
 
     public String getParentName() {
+        if (parent == null) {
+            return name;
+        }
         return parent.getName();
     }
 

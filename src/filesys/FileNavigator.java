@@ -93,7 +93,9 @@ public abstract class FileNavigator {
         if(clueGame && currentDir.getParentName().equals("Rooms") && currentDir.isEmpty()){
             System.out.println("You've found all the clues in this room! Use the command `cd ..` to move back to your previous directory.");
         }
-        ls(currentDir);
+        else {
+            ls(currentDir);
+        }
     }
 
     public void ls(String name) {
