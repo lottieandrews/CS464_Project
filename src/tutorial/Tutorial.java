@@ -5,9 +5,11 @@ public class Tutorial {
 
     public Directory start = new Directory("Start");
         public Directory goHere = new Directory("GoHere");
-            public File readMe = new File("readMe",
-                    "This file contains some text.");
-            public File searchMe = new File("searchMe",
+            public Directory keepGoing = new Directory("KeepGoing");
+                public Directory evenFurther = new Directory("EvenFurther");
+        public File readMe = new File("readMe",
+                "This file contains some text.");
+        public File searchMe = new File("searchMe",
                     """
                             This line contains the word 'foobar'.
                             This line doesn't.
@@ -22,8 +24,10 @@ public class Tutorial {
 
     public Tutorial() {
         start.addChild(goHere);
-            goHere.addChild(readMe);
-            goHere.addChild(searchMe);
+            goHere.addChild(keepGoing);
+                keepGoing.addChild(evenFurther);
+        start.addChild(readMe);
+        start.addChild(searchMe);
         start.addChild(renameMe);
         start.addChild(deleteMe);
             deleteMe.addChild(removeMe);

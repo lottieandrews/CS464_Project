@@ -1,7 +1,5 @@
 package filesys;
 
-import filesys.Directory;
-
 public abstract class Node {
     private Directory parent = null;
     private String name;
@@ -45,6 +43,9 @@ public abstract class Node {
     }
 
     public String getParentName() {
+        if (parent == null) {
+            return name;
+        }
         return parent.getName();
     }
 
