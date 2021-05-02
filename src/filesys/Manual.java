@@ -2,6 +2,12 @@ package filesys;
 
 public class Manual {
 
+    private boolean clueGame;
+
+    public Manual(boolean clueGame) {
+        this.clueGame = clueGame;
+    }
+
     public void man() {
         System.out.println("""
 
@@ -54,6 +60,11 @@ public class Manual {
                         Type `grep` followed by any word and the name of a file in your current directory to search for that word inside of the file.
                         This command will return all lines in the specified file which contain the specified word.
                         """);
+                if (clueGame) {
+                    System.out.println("In this game, you can only use the `grep` command to search for a single word (no spaces are allowed). If one of your answers contains two words, search for it as follows:\n" +
+                            "- If the name of the room contains two words (e.g., 'Billiard Room'), search only for the word 'Billiard'.\n" +
+                            "- All of the suspect names contain a title followed by a surname (e.g., 'Miss Scarlet'). Search only for the surname (e.g., 'Scarlet').");
+                }
                 break;
             case "ls":
                 System.out.println("""

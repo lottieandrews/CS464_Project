@@ -7,6 +7,7 @@ public abstract class FileNavigator {
     protected final Directory ROOT_DIR;
     protected Directory currentDir;
     protected boolean clueGame = false;
+    protected boolean cluesReviewed = false;
 
     protected int roomsVisitCounter = 0;
     protected int rmdirCounter = 0;
@@ -56,11 +57,18 @@ public abstract class FileNavigator {
                         pwd();
                     }
                 }
+                if (currentRoom.equals("Clue") && cluesReviewed) {
+                    System.out.println("Now that you have collected all of the clues and reviewed your evidence, it is time to make your final accusation. You must guess the name of the murderer, the weapon used, and the room in which the murder took place." + "" +
+                            "Use the `grep` command to search for your answers in the CONFIDENTIAL file. Guess all three correctly and you win the game!");
+                    System.out.println("Type `man grep` to learn how to use the `grep` command.");
+                }
                 if (currentRoom.equals("Notebook")) {
-                    System.out.println("Now that you have all the evidence it's time to piece together the murder scene. Using the process of elimination, determine the murder weapon, scene of the crime, and prime suspect to solve this case! Once you have your hunch, navigate back to the main 'Clue' directory. Once there you will use the grep command to compare keywords (i.e. knife) in your answer to the answer in the CONFIDENTIAL folder. Guess all three correctly and you win the game!");
+                    System.out.println("Now that you have all the evidence it's time to piece together the murder scene. Using the process of elimination, determine the murder weapon, scene of the crime, and prime suspect to solve this case! Once you have your hunch, navigate back to the main directory to make your accusation.");
                     System.out.println("Possible murder weapons: Wrench, Lead Pipe, Revolver, Knife, Rope, Candlestick");
                     System.out.println("Possible perpetrators: Miss Scarlett, Reverend Green, Professor Plum, Colonel Mustard, Mrs. Peacock, Mrs. White");
                     System.out.println("Possible crime scenes: Study, Kitchen, Hall, Conservatory, Lounge, Ballroom, Dining Room, Library, Billiard Room");
+
+                    System.out.println("Use `ls` to view the clues you have collected.");
                 }
             }
         }
@@ -115,12 +123,15 @@ public abstract class FileNavigator {
 
     public void ls() {
         errorCounter = 0;
-        if(clueGame && currentDir.getParentName().equals("Rooms") && currentDir.isEmpty()){
-            System.out.println("You've found all the clues in this room! Use the command `cd ..` to move back to your previous directory.");
+        if (clueGame) {
+            if (currentDir.getParentName().equals("Rooms") && currentDir.isEmpty()) {
+                System.out.println("You've found all the clues in this room! Use the command `cd ..` to move back to your previous directory.");
+            }
+            if(currentDir.getName().equals("Notebook")) {
+                cluesReviewed = true;
+            }
         }
-        else {
-            ls(currentDir);
-        }
+        ls(currentDir);
     }
 
     public void ls(String name) {

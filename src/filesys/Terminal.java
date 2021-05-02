@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 public class Terminal extends FileNavigator {
     public final String USER;
-    public final Manual MANUAL = new Manual();
+    public final Manual MANUAL = new Manual(clueGame);
 
     public Terminal() {
         super();
