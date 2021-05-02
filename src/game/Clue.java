@@ -1,4 +1,7 @@
-package game;
+
+import Directory;
+import File;
+import Terminal;
 import filesys.*;
 
 public class Clue {
