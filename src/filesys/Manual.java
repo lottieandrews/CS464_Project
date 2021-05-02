@@ -62,8 +62,8 @@ public class Manual {
                         """);
                 if (clueGame) {
                     System.out.println("In this game, you can only use the `grep` command to search for a single word (no spaces are allowed). If one of your answers contains two words, search for it as follows:\n" +
-                            "- If the name of the room contains two words (e.g., 'Billiard Room'), search only for the word 'Billiard'.\n" +
-                            "- All of the suspect names contain a title followed by a surname (e.g., 'Miss Scarlet'). Search only for the surname (e.g., 'Scarlet').");
+                            "- If the name of the room contains two words (e.g., 'Game Room'), search only for the first word (e.g., 'Game').\n" +
+                            "- All of the suspect names contain a title followed by a surname (e.g., 'Mr. Smith'). Search only for the surname (e.g., 'Smith').");
                 }
                 break;
             case "ls":
