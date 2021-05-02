@@ -8,7 +8,6 @@ public abstract class FileNavigator {
     protected Directory currentDir;
     protected boolean clueGame = false;
 
-    int moveCounter = 0;
     int roomsVisitCounter = 0;
     int rmdirCounter = 0;
     int grepCounter = 0;
@@ -42,8 +41,13 @@ public abstract class FileNavigator {
                         System.out.println("You're back in the 'Rooms' directory. Use the `rmdir` command to remove the empty room, then choose another room to investigate. Remember to use the `ls` command to see which rooms can be searched.");
                     }
                 }
-                if (currentRoom.equals("Ballroom") || currentRoom.equals("BilliardRoom") || currentRoom.equals("Conservatory") || currentRoom.equals("DiningRoom") || currentRoom.equals("Hall") || currentRoom.equals("Kitchen") || currentRoom.equals("Library") || currentRoom.equals("Lounge") || currentRoom.equals("Study")) {
-                    System.out.println("You're in the " + dirName + "! Use the `ls` command to list the clues hidden here. Use the `more` command to read what the clues contain.");
+                if (currentDir.getParentName().equals("Rooms")) {
+                    if (currentDir.isEmpty()) {
+                        System.out.println("You've found all the clues in this room! Use the command `cd ..` to move back to your previous directory.");
+                    }
+                    else {
+                        pwd();
+                    }
                 }
                 if (currentRoom.equals("Notebook")) {
                     System.out.println("Now that you have all the evidence it's time to piece together the murder scene. Using the process of elimination, determine the murder weapon, scene of the crime, and prime suspect to solve this case!");
@@ -86,6 +90,9 @@ public abstract class FileNavigator {
     }
 
     public void ls() {
+        if(clueGame && currentDir.getParentName().equals("Rooms") && currentDir.isEmpty()){
+            System.out.println("You've found all the clues in this room! Use the command `cd ..` to move back to your previous directory.");
+        }
         ls(currentDir);
     }
 
@@ -136,7 +143,8 @@ public abstract class FileNavigator {
     public void more(String fileName) {
         if (validateName(fileName, new String[]{"File"}) && !fileName.equals("CONFIDENTIAL")) {
             System.out.println(currentDir.getFile(fileName).getFileText());
-            System.out.println("\nYou found a clue! Use the mv command to rename the clue to something that's easier to remember (e.g., 'mv roomClue1 notWeapon') then type the command 'mv ~/Notebook' to move it to your Notebook for safekeeping.");
+            System.out.println("\nYou found a clue! Use the `mv` command to rename the clue to something that's easier to remember (e.g., `mv roomClue1 notWeapon`), " +
+                            "then use the command `mv` with the destination `~/Notebook` to move it to your Notebook for safekeeping.");
         } else {
             System.out.println("Hey! No peeking!");
         }
@@ -168,8 +176,7 @@ public abstract class FileNavigator {
                 else if (getType(name2) == "Directory") { // Move file to directory
                         currentDir.getSubDir(name2).addChild(currentDir.getFile(name1));
                         currentDir.remove(name1);
-                        moveCounter++;
-                        if(moveCounter >= 2){
+                        if(clueGame && currentDir.isEmpty()){
                             System.out.println("You've found all the clues in this room! Use the command `cd ..` to move back to your previous directory.");
                         }
                 }
@@ -181,7 +188,12 @@ public abstract class FileNavigator {
     }
 
     public void pwd() {
-        System.out.println(currentDir.getName());
+        if (clueGame && currentDir.getParentName().equals("Rooms")) {
+            System.out.println("You're in the " + currentDir.getName() + "! Use the `ls` command to list the clues hidden here. Use the `more` command to read what the clues contain.");
+        }
+        else {
+            System.out.println(currentDir.getName());
+        }
     }
 
     public void rm(String fileName) {
@@ -201,7 +213,6 @@ public abstract class FileNavigator {
             else {
                 currentDir.remove(dirName);
                 rmdirCounter++;
-                moveCounter = 0;
                 if(rmdirCounter >= 9){
                     System.out.println("You've found all the clues! Use the 'cd ~' command to go back to your home directory, then navigate to your Notebook to sift through your notes and solve this murder!");
                 }
