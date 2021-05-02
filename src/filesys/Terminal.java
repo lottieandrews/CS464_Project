@@ -47,9 +47,11 @@ public class Terminal extends FileNavigator {
         String[] args = in.trim().split(" ");
         if (clueGame && ROOT_DIR.getSubDir("Notebook") == null) {
             if (!args[0].equals("mkdir")) {
-                printError("You must create your Notebook before you can begin the game.", "mkdir");
+                System.out.println("You must create your Notebook before you can begin the game.");
+                System.out.println("Do this by typing 'mkdir Notebook'.");
             } else if (!args[1].equals("Notebook")) {
-                printError("Oops! Check your spelling. You're trying to make a directory called `Notebook`.", "mkdir");
+                System.out.println("Oops! Check your spelling. You're trying to make a directory called `Notebook`.");
+                System.out.println("Do this by typing 'mkdir Notebook'.");
             }
         } else {
             switch (args[0]) {
