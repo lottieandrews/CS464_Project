@@ -155,6 +155,7 @@ public abstract class FileNavigator {
                     moveCounter++;
                     if(moveCounter == 2){
                         System.out.println("You've found all the clues in this room! Use the cd command to move back to the 'Rooms' directory");
+                        moveCounter = 0;
                     }
                 }
                 else { // Rename file
