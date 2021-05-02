@@ -4,17 +4,19 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 public class Terminal extends FileNavigator {
-    public final String USER;
-    public final Manual MANUAL = new Manual(clueGame);
+    private final String USER;
+    private Manual manual;
 
     public Terminal() {
         super();
         this.USER = "user@Bash-Terminal";
+        this.manual = new Manual(clueGame);
     }
 
     public Terminal(Directory ROOT_DIR) {
         super(ROOT_DIR);
         this.USER = "user@Bash-Terminal";
+        this.manual = new Manual(clueGame);
     }
 
     public Terminal(Directory ROOT_DIR, String USER) {
@@ -23,6 +25,7 @@ public class Terminal extends FileNavigator {
         if (USER.equals("detective@Bash-Detective")) {
             clueGame = true;
         }
+        this.manual = new Manual(clueGame);
     }
 
     public void launch() {
@@ -87,9 +90,9 @@ public class Terminal extends FileNavigator {
                 break;
             case "man":
                 if (args.length == 1) {
-                    MANUAL.man();
+                    manual.man();
                 } else if (args.length == 2) {
-                    MANUAL.man(args[1]);
+                    manual.man(args[1]);
                 }
                 break;
             case "mkdir":

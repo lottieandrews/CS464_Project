@@ -54,7 +54,7 @@ public class Manual {
                                    "This command will return all lines in the specified file which contain the specified word.\n");
                 if (clueGame) {
                     System.out.println("In this game, you can only use the `grep` command to search for a single word (no spaces are allowed). If one of your answers contains two words, search for it as follows:\n" +
-                            "- If the name of the room contains two words (e.g., 'Game Room'), search only for the first word (e.g., 'Game').\n" +
+                            "- If the name of the room contains two words (e.g., 'GameRoom' or 'Game Room'), search only for the first word (e.g., 'Game').\n" +
                             "- All of the suspect names contain a title followed by a surname (e.g., 'Mr. Smith'). Search only for the surname (e.g., 'Smith').");
                 }
                 break;
