@@ -8,10 +8,10 @@ public abstract class FileNavigator {
     protected Directory currentDir;
     protected boolean clueGame = false;
 
-    int roomsVisitCounter = 0;
-    int rmdirCounter = 0;
-    int grepCounter = 0;
-    int errorCounter = 0;
+    protected int roomsVisitCounter = 0;
+    protected int rmdirCounter = 0;
+    protected int grepCounter = 0;
+    protected int errorCounter = 0;
 
     public FileNavigator() {
         this.ROOT_DIR = new Directory();
@@ -29,7 +29,13 @@ public abstract class FileNavigator {
 
     public void cd(String dirName) {
         if (validateName(dirName, new String[]{"Directory"})) {
-            currentDir = currentDir.getSubDir(dirName);
+            if (clueGame && ROOT_DIR.getSubDir("Notebook") == null) {
+                printError("You must create your Notebook before you can begin the game.", "mkdir");
+            }
+            else {
+                currentDir = currentDir.getSubDir(dirName);
+                errorCounter = 0;
+            }
             if (clueGame) {
                 String currentRoom = currentDir.getName();
                 if (currentRoom.equals("Rooms")) {
@@ -85,12 +91,14 @@ public abstract class FileNavigator {
                 }
             }
         }
+        errorCounter = 0;
         if (grepCounter >= 3){
             System.out.println("Congratulations! You won the game! Use the `exit` command to quit the terminal.");
         }
     }
 
     public void ls() {
+        errorCounter = 0;
         if(clueGame && currentDir.getParentName().equals("Rooms") && currentDir.isEmpty()){
             System.out.println("You've found all the clues in this room! Use the command `cd ..` to move back to your previous directory.");
         }
@@ -101,6 +109,7 @@ public abstract class FileNavigator {
 
     public void ls(String name) {
         if (validateName(name, new String[]{"File", "Directory"})) {
+            errorCounter = 0;
             if (getType(name).equals("File")) {
                 System.out.println(name);
             }
@@ -124,15 +133,17 @@ public abstract class FileNavigator {
             printError(dirName + ": File or directory already exists", "mkdir");
         }
         else {
+            errorCounter = 0;
             currentDir.addChild(new Directory(dirName));
         }
-        if (dirName.equals("Notebook")){
+        if (clueGame && dirName.equals("Notebook")){
             System.out.println("Great! Now you are ready to start looking for clues! Use the command 'cd Rooms' to enter the rooms.");
         }
     }
 
     public void more(String fileName) {
         if (validateName(fileName, new String[]{"File"})) {
+            errorCounter = 0;
             if (clueGame && fileName.equals("CONFIDENTIAL")) {
                 System.out.println("Hey! No peeking!");
                 return;
@@ -150,9 +161,11 @@ public abstract class FileNavigator {
             if (getType(name1) == "Directory") {
                 if (name1.equals("..") || name1.equals(".") || name1.equals("~")) { // Move current or parent directory somewhere else (bad)
                     printError("Rename " + name1 + " to " + name2 + ": Invalid argument", "mv");
+                    return;
                 }
                 if (getType(name2) == "File") { // Move directory to file (bad)
                     printError("Rename " + name1 + " to " + name2 + ": " + name2 + " is not a directory", "mv");
+                    return;
                 }
                 else if (getType(name2) == "Directory") { // Move directory into another directory
                     currentDir.getSubDir(name2).addChild(currentDir.getSubDir(name1));
@@ -179,6 +192,7 @@ public abstract class FileNavigator {
                     currentDir.getFile(name1).setName(name2);
                 }
             }
+            errorCounter = 0;
         }
     }
 
@@ -193,6 +207,7 @@ public abstract class FileNavigator {
 
     public void rm(String fileName) {
         if(validateName(fileName, new String[]{"File"})) {
+            errorCounter = 0;
             currentDir.remove(fileName);
         }
     }
@@ -206,9 +221,10 @@ public abstract class FileNavigator {
                 printError(dirName + ": Directory not empty", "rmdir");
             }
             else {
+                errorCounter = 0;
                 currentDir.remove(dirName);
                 rmdirCounter++;
-                if(rmdirCounter >= 9){
+                if(clueGame && rmdirCounter >= 9){
                     System.out.println("You've found all the clues! Use the 'cd ~' command to go back to your home directory, then navigate to your Notebook to sift through your notes and solve this murder!");
                 }
             }

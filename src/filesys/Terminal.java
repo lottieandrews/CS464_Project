@@ -72,7 +72,6 @@ public class Terminal extends FileNavigator {
                 }
                 break;
             case "man":
-                errorCounter = 0;
                 if (args.length == 1) { MANUAL.man(); }
                 else if (args.length == 2) { MANUAL.man(args[1]); }
                 break;
