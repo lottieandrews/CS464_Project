@@ -84,13 +84,17 @@ public abstract class FileNavigator {
                     }
                 }
                 else {
-                    if (line.contains(word.toLowerCase())) {
+                    if (line.toLowerCase().contains(word.toLowerCase())) {
                         if (!fileName.equals("CONFIDENTIAL")) {
                             System.out.println(line);
                         }
                         else {
                             switch (word.toLowerCase()) {
                                 case "colonel":
+                                    System.out.println("So close! '" + word + "' is not the right answer.");
+                                    System.out.println("Keep exploring rooms for more clues or go back to your Notebook and review your evidence, then try again.");
+                                    System.out.println("Still convinced you're right? Reread `man grep`. You may have entered the correct answer, but in the wrong format.");
+                                    break;
                                 case "mustard":
                                     System.out.println("Great work! You found the murderer!");
                                     grepCounter++;
@@ -111,6 +115,7 @@ public abstract class FileNavigator {
                     } else if (fileName.equals("CONFIDENTIAL")) {
                         System.out.println("So close! '" + word + "' is not the right answer.");
                         System.out.println("Keep exploring rooms for more clues or go back to your Notebook and review your evidence, then try again.");
+                        System.out.println("Still convinced you're right? Reread `man grep`; you may have entered the correct answer, but in the wrong format.");
                     }
                     if (grepCounter >= 3){
                         System.out.println("Congratulations! You won the game! Use the `exit` command to quit the terminal.");
