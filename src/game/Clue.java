@@ -73,7 +73,7 @@ public class Clue {
         "exit command when you're finished to exit the game.");
         System.out.println("\nStart by creating a directory called 'Notebook' to store your clues. Do this by typing 'mkdir Notebook'.\n");
         Clue clue = new Clue();
-        Terminal tr = new Terminal(clue.clue);
+        Terminal tr = new Terminal(clue.clue, "detective@Bash-Detective");
         tr.launch();
     }
 }

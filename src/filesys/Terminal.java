@@ -16,9 +16,12 @@ public class Terminal extends FileNavigator {
         this.USER = "user@Bash-Terminal";
     }
 
-    public Terminal(String USER, Directory ROOT_DIR) {
+    public Terminal(Directory ROOT_DIR, String USER) {
         super(ROOT_DIR);
         this.USER = USER;
+        if (USER.equals("detective@Bash-Detective")) {
+            clueGame = true;
+        }
     }
 
     public void launch() {
@@ -90,7 +93,7 @@ public class Terminal extends FileNavigator {
             case "exit":
                 break;
             default:
-                printError("Command not found: " + args[0], "man");
+                printError("Command not found: `" + args[0] + "`", "man");
                 break;
         }
     }
@@ -113,10 +116,10 @@ public class Terminal extends FileNavigator {
     private void printError(String errorMessage, String command) {
         System.out.println(errorMessage);
         if (command.equals("man")) {
-            System.out.println("Need help? Type `man` for more information.");
+            System.out.println("Need help? Type the `man` command for more information.");
         }
         else {
-            System.out.println("Need help? Type `man " + command + "` for more information.");
+            System.out.println("Need help? Type the `man " + command + "` command for more information.");
         }
     }
 }

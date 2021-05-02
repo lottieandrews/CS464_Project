@@ -6,9 +6,10 @@ public abstract class FileNavigator {
 
     protected final Directory ROOT_DIR;
     protected Directory currentDir;
+    protected boolean clueGame = false;
 
     int moveCounter = 0;
-    boolean isFirstTime = true;
+    int roomsVisitCounter = 0;
     int rmdirCounter = 0;
     int grepCounter = 0;
 
@@ -29,25 +30,29 @@ public abstract class FileNavigator {
     public void cd(String dirName) {
         if (validateName(dirName, new String[]{"Directory"})) {
             currentDir = currentDir.getSubDir(dirName);
-            if (currentDir.getName().equals("Rooms") && !isFirstTime){
-                System.out.println("You're back in the 'Rooms' directory. Use the rmdir command to remove the empty room, then choose another room to investigate. Remember to use the ls command to see which rooms can be searched.");
+            if (clueGame) {
+                String currentRoom = currentDir.getName();
+                if (currentRoom.equals("Rooms")) {
+                    if (roomsVisitCounter == 0) {
+                        roomsVisitCounter++;
+                        System.out.println("Good work! You can use the `ls` command to look at your options " +
+                                "and the `cd` command to move from room to room. Try investigating the Ballroom first. ");
+                    }
+                    else {
+                        System.out.println("You're back in the 'Rooms' directory. Use the `rmdir` command to remove the empty room, then choose another room to investigate. Remember to use the `ls` command to see which rooms can be searched.");
+                    }
+                }
+                if (currentRoom.equals("Ballroom") || currentRoom.equals("BilliardRoom") || currentRoom.equals("Conservatory") || currentRoom.equals("DiningRoom") || currentRoom.equals("Hall") || currentRoom.equals("Kitchen") || currentRoom.equals("Library") || currentRoom.equals("Lounge") || currentRoom.equals("Study")) {
+                    System.out.println("You're in the " + dirName + "! Use the `ls` command to list the clues hidden here. Use the `more` command to read what the clues contain.");
+                }
+                if (currentRoom.equals("Notebook")) {
+                    System.out.println("Now that you have all the evidence it's time to piece together the murder scene. Using the process of elimination, determine the murder weapon, scene of the crime, and prime suspect to solve this case!");
+                    System.out.println("Possible murder weapons: Wrench, Lead Pipe, Revolver, Knife, Rope, Candlestick");
+                    System.out.println("Possible perpetrators: Miss Scarlett, Reverend Green, Professor Plum, Colonel Mustard, Mrs. Peacock, Mrs. White");
+                    System.out.println("Possible crime scenes: Study, Kitchen, Hall, Conservatory, Lounge, Ballroom, Dining Room, Library, Billiard Room");
+                }
             }
         }
-        if (dirName.equals("Rooms") && isFirstTime){
-            System.out.println("Good work! You can use the ls command to look at your options " +
-            "and the cd command to move from room to room. Try investigating the Ballroom first. ");
-            isFirstTime = false;
-        }
-        if (dirName.equals("Ballroom") || dirName.equals("BilliardRoom") || dirName.equals("Conservatory") || dirName.equals("DiningRoom") || dirName.equals("Hall") || dirName.equals("Kitchen") || dirName.equals("Library") || dirName.equals("Lounge") || dirName.equals("Study")){
-            System.out.println("You're in the " + dirName + "! Use the ls command to list the clues hidden here. Use the more command to read what the clues contain.");
-        }
-        if (dirName.equals("Notebook")){
-            System.out.println("Now that you have all the evidence it's time to piece together the murder scene. Using the process of elimination, determine the murder weapon, scene of the crime, and prime suspect to solve this case!");
-            System.out.println("Possible murder weapons: Wrench, Lead Pipe, Revolver, Knife, Rope, Candlestick");
-            System.out.println("Possible perpetrators: Miss Scarlett, Reverend Green, Professor Plum, Colonel Mustard, Mrs. Peacock, Mrs. White");
-            System.out.println("Possible crime scenes: Study, Kitchen, Hall, Conservatory, Lounge, Ballroom, Dining Room, Library, Billiard Room");
-        }
-        
     }
 
     public void grep(String word, String fileName) {
@@ -76,7 +81,7 @@ public abstract class FileNavigator {
             }
         }
         if (grepCounter >= 3){
-            System.out.println("Congratulations! You won the game! Use the exit command to quit the terminal.");
+            System.out.println("Congratulations! You won the game! Use the `exit` command to quit the terminal.");
         }
     }
 
@@ -131,7 +136,7 @@ public abstract class FileNavigator {
     public void more(String fileName) {
         if (validateName(fileName, new String[]{"File"}) && !fileName.equals("CONFIDENTIAL")) {
             System.out.println(currentDir.getFile(fileName).getFileText());
-            System.out.println("\nYou found a clue! Use the mv command to rename the clue to something that's easier to remember (e.g., 'mv ballroomClue notDiningRoom') then type the command 'mv ~/Notebook' to move it to your Notebook for safekeeping.");
+            System.out.println("\nYou found a clue! Use the mv command to rename the clue to something that's easier to remember (e.g., 'mv roomClue1 notWeapon') then type the command 'mv ~/Notebook' to move it to your Notebook for safekeeping.");
         } else {
             System.out.println("Hey! No peeking!");
         }
@@ -165,7 +170,7 @@ public abstract class FileNavigator {
                         currentDir.remove(name1);
                         moveCounter++;
                         if(moveCounter >= 2){
-                            System.out.println("You've found all the clues in this room! Use the command 'cd ..' to move back to your previous directory.");
+                            System.out.println("You've found all the clues in this room! Use the command `cd ..` to move back to your previous directory.");
                         }
                 }
                 else { // Rename file
