@@ -1,8 +1,5 @@
 package filesys;
 
-import filesys.Directory;
-import filesys.FileNavigator;
-
 import java.util.Arrays;
 import java.util.Scanner;
 

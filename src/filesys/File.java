@@ -1,6 +1,5 @@
 package filesys;
 
-//This class is exactly the same as Node, but can be instantiated. A Directory is-a Node, not a File.
 public class File extends Node {
 
     public File() {

@@ -74,6 +74,9 @@ public class Directory extends Node {
         if (dirName.equals(".")) {
             return this;
         }
+        if (dirName.equals("~")) {
+            return getRootDir();
+        }
         return subDirs.get(dirName);
     }
 

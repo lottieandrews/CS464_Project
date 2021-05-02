@@ -48,6 +48,20 @@ public abstract class Node {
         return parent.getName();
     }
 
+    protected Directory getRootDir() {
+        Node current = this;
+        Directory parent = this.getParent();
+        while (parent != null) {
+            current = current.getParent();
+            try {
+                parent = parent.getParent();
+            } catch (NullPointerException e) {
+                return (Directory) current;
+            }
+        }
+        return (Directory) current; // This should never be reached
+    }
+
     // This method is just here so the ArrayList.toString() method will work for print debugging
     // the Directory subclass. Use getName() instead.
     public String toString() {
