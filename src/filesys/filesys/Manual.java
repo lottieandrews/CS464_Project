@@ -1,9 +1,10 @@
 package filesys;
 
+
 public class Manual {
 
     public void man() {
-        System.out.println("""
+        /*System.out.println("""
 
                 MAN: ACCESS THE MANUAL
 
@@ -12,11 +13,11 @@ public class Manual {
 
                 Use the `man` command followed by a command name to access information about that command.
                 Supported commands: cd, exit, grep, ls, mkdir, more, mv, pwd, rm, rmdir
-                """);
+                """);*/
     }
 
     public void man(String command) {
-        switch (command) {
+        /*switch (command) {
             case "cd":
                 System.out.println("""
                         
@@ -147,6 +148,6 @@ public class Manual {
                 System.out.println("Command not supported: " + command);
                 System.out.println("Type `man` for a list of supported commands.");
                 break;
-        }
+        }*/
     }
 }

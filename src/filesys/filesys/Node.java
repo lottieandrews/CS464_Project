@@ -1,7 +1,5 @@
 package filesys;
 
-import filesys.Directory;
-
 public abstract class Node {
     private Directory parent = null;
     private String name;

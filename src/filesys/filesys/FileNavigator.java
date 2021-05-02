@@ -1,5 +1,6 @@
 package filesys;
 
+
 import java.util.Arrays;
 
 public abstract class FileNavigator {
@@ -119,7 +120,7 @@ public abstract class FileNavigator {
     public void more(String fileName) {
         if (validateName(fileName, new String[]{"File"}) && !fileName.equals("CONFIDENTIAL")) {
             System.out.println(currentDir.getFile(fileName).getFileText());
-            System.out.println("You found a clue! Use the mv to rename the clue to something that's easier to remember (i.e., 'NotWrench') then use the mv command again to move it to your Notebook for safe keeping.");
+            System.out.println("You found a clue! Use the mv to rename the clue to something that's easier to remember (i.e., 'NotWrench') then use the mv command again to move it to your Notebook for safe keeping. Remember to use the man command if you need help!");
         } else {
             System.out.println("Hey! No peeking!");
         }
@@ -148,13 +149,14 @@ public abstract class FileNavigator {
                     currentDir.remove(name2);
                     currentDir.getFile(name1).setName(name2);
                 }
-                else if (getType(name2) == "Directory") { // Move file to directory
-                        currentDir.getSubDir(name2).addChild(currentDir.getFile(name1));
-                        currentDir.remove(name1);
-                        moveCounter++;
-                        if(moveCounter >= 2){
-                            System.out.println("You've found all the clues in this room! Use the cd command to move back to the 'Rooms' directory");
-                        }
+                else if (name2.equals("~/Notebook")) { // Move file to notebook directory
+                    currentDir.getParent().getParent().getSubDir("Notebook").addChild(currentDir.getFile(name1));
+                    //currentDir.getSubDir(name2).addChild(currentDir.getFile(name1));
+                    currentDir.remove(name1);
+                    moveCounter++;
+                    if(moveCounter >= 2){
+                        System.out.println("You've found all the clues in this room! Use the cd command to move back to the 'Rooms' directory");
+                    }
                 }
                 else { // Rename file
                     currentDir.getFile(name1).setName(name2);

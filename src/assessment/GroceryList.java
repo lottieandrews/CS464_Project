@@ -1,4 +1,4 @@
-package assessment;
+
 import filesys.*;
 
 public class GroceryList {
