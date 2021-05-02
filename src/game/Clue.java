@@ -6,7 +6,7 @@ public class Clue {
         public File confidential = new File("CONFIDENTIAL", "Colonel Mustard in the study with the revolver!");
         public Directory rooms = new Directory("Rooms");
             public Directory study = new Directory("Study");
-                public File studyClue1 = new File("studyClue1", "You have to believe me! It wasn't Miss Scarlet!");
+                public File studyClue1 = new File("studyClue1", "You have to believe me! It wasn't Miss Scarlett!");
                 public File studyClue2 = new File("studyClue2", "The wrench wasn't the murder weapon! I swear!");
             public Directory kitchen = new Directory("Kitchen");
                 public File kitchenClue1 = new File("kitchenClue1", "I've been with Reverend Green all night! It couldn't have been him!");

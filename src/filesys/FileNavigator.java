@@ -25,7 +25,7 @@ public abstract class FileNavigator {
     }
 
     public void cd() {
-        currentDir = ROOT_DIR;
+        cd("~");
     }
 
     public void cd(String dirName) {
@@ -64,12 +64,11 @@ public abstract class FileNavigator {
                     System.out.println("Type `man grep` to learn how to use the `grep` command.");
                 }
                 if (currentRoom.equals("Notebook")) {
-                    System.out.println("Now that you have all the evidence it's time to piece together the murder scene. Using the process of elimination, determine the murder weapon, scene of the crime, and prime suspect to solve this case! Once you have your hunch, navigate back to the main directory to make your accusation.");
+                    System.out.println("Now that you have all the evidence it's time to piece together the murder scene. Using the process of elimination, determine the murder weapon, scene of the crime, and prime suspect to solve this case!");
                     System.out.println("Possible murder weapons: Wrench, Lead Pipe, Revolver, Knife, Rope, Candlestick");
                     System.out.println("Possible perpetrators: Miss Scarlett, Reverend Green, Professor Plum, Colonel Mustard, Mrs. Peacock, Mrs. White");
                     System.out.println("Possible crime scenes: Study, Kitchen, Hall, Conservatory, Lounge, Ballroom, Dining Room, Library, Billiard Room");
-
-                    System.out.println("Use `ls` to view the clues you have collected.");
+                    System.out.println("\nUse `ls` to view the clues you have collected. Once you have your hunch, navigate back to the main directory to make your accusation.");
                 }
             }
         }
