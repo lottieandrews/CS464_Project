@@ -28,7 +28,7 @@ public class Clue {
                 public File diningClue2 = new File("diningClue2", "Ballroom's too clean for it to have happened in there!");
             public Directory library = new Directory("Library");
                 public File libraryClue1 = new File("libraryClue1", "Definitely didn't happen in the Kitchen!");
-                public File libraryClue2 = new File("libraryClue2", "All the plumbing seems to be intact so it couldn't have been the lead pipe!");
+                public File libraryClue2 = new File("libraryClue2", "All the plumbing seems to be intact, so it couldn't have been the lead pipe!");
             public Directory billiardRoom = new Directory("BilliardRoom");
                 public File billiardClue1 = new File("billiardClue1", "It most certainly couldn't have happened in the hall!");
                 public File billiardClue2 = new File("billiardClue2", "Seriously? Obviously the murder weapon wasn't the rope!");

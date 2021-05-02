@@ -70,31 +70,46 @@ public abstract class FileNavigator {
         if (validateName(fileName, new String[]{"File"})) {
             String[] fileText = getLines(currentDir.getFile(fileName).getFileText());
             for (String line : fileText) {
-                if (line.contains(word)) {
-                    switch(word){
-                        case "Mustard":
-                            System.out.println("Great work! You found the murderer!");
-                            grepCounter++;
-                            break;
-                        case "study":
-                            System.out.println("Nice job! You found the scene of the crime!");
-                            grepCounter++;
-                            break;
-                        case "revolver":
-                            System.out.println("Excellent! You found the murder weapon!");
-                            grepCounter++;
-                            break;
-                        default:
+                if (!clueGame) {
+                    if(line.contains(word)) {
+                        System.out.println(line);
+                    }
+                }
+                else {
+                    if (line.contains(word.toLowerCase())) {
+                        if (!fileName.equals("CONFIDENTIAL")) {
                             System.out.println(line);
-                            break;
+                        }
+                        else {
+                            switch (word.toLowerCase()) {
+                                case "colonel":
+                                case "mustard":
+                                    System.out.println("Great work! You found the murderer!");
+                                    grepCounter++;
+                                    break;
+                                case "study":
+                                    System.out.println("Nice job! You found the scene of the crime!");
+                                    grepCounter++;
+                                    break;
+                                case "revolver":
+                                    System.out.println("Excellent! You found the murder weapon!");
+                                    grepCounter++;
+                                    break;
+                                default:
+                                    break;
+                            }
+                        }
+                    } else if (fileName.equals("CONFIDENTIAL")) {
+                        System.out.println("So close! '" + word + "' is not the right answer.");
+                        System.out.println("Keep exploring rooms for more clues or go back to your Notebook and review your evidence, then try again.");
+                    }
+                    if (grepCounter >= 3){
+                        System.out.println("Congratulations! You won the game! Use the `exit` command to quit the terminal.");
                     }
                 }
             }
         }
         errorCounter = 0;
-        if (grepCounter >= 3){
-            System.out.println("Congratulations! You won the game! Use the `exit` command to quit the terminal.");
-        }
     }
 
     public void ls() {
