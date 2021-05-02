@@ -131,12 +131,16 @@ public abstract class FileNavigator {
     }
 
     public void more(String fileName) {
-        if (validateName(fileName, new String[]{"File"}) && !fileName.equals("CONFIDENTIAL")) {
+        if (validateName(fileName, new String[]{"File"})) {
+            if (clueGame && fileName.equals("CONFIDENTIAL")) {
+                System.out.println("Hey! No peeking!");
+                return;
+            }
             System.out.println(currentDir.getFile(fileName).getFileText());
-            System.out.println("\nYou found a clue! Use the `mv` command to rename the clue to something that's easier to remember (e.g., `mv roomClue1 notWeapon`), " +
-                            "then use the command `mv` with the destination `~/Notebook` to move it to your Notebook for safekeeping.");
-        } else {
-            System.out.println("Hey! No peeking!");
+            if (clueGame) {
+                System.out.println("\nYou found a clue! Use the `mv` command to rename the clue to something that's easier to remember (e.g., `mv roomClue1 notWeapon`), " +
+                        "then use the command `mv` with the destination `~/Notebook` to move it to your Notebook for safekeeping.");
+            }
         }
     }
 
