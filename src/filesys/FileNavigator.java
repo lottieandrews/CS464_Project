@@ -209,7 +209,7 @@ public abstract class FileNavigator {
                     currentDir.remove(name2);
                     currentDir.getFile(name1).setName(name2);
                 }
-                else if (getType(name2) == "Directory") { // Move file to directory
+                else if (getType(name2) == "Directory" || name2.equals("~/Notebook")) { // Move file to directory
                     if (clueGame) {
                         if (name2.equals("~/Notebook")) { // Move file to notebook directory
                             ROOT_DIR.getSubDir("Notebook").addChild(currentDir.getFile(name1));
