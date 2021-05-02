@@ -11,14 +11,17 @@ public class Clue {
             public Directory kitchen = new Directory("Kitchen");
                 public File kitchenClue1 = new File("kitchenClue1", "I've been with Reverend Green all night! It couldn't have been him!");
                 public File kitchenClue2 = new File("kitchenClue2", "No way it happened in the Library!");
+                public File kitchenClue3 = new File("kitchenClue3", "Mrs. White wouldn't hurt a fly! It most certainly wasn't her!");
             public Directory hall = new Directory("Hall");
                 public File hallClue1 = new File("hallClue1", "I don't know who dunnit but it wasn't Professor Plum!");
-                public File hallClue2 = new File("hallClue2", "Not sure where it happened but it definitely wasn't in the Billiard Room!");
+                public File hallClue2 = new File("hallClue2", "You found a red herring! This clue contains no evidence; use the `rm` command to delete it.");
+                public File hallClue3 = new File("hallClue2", "Not sure where it happened but it definitely wasn't in the Billiard Room!");
             public Directory conservatory = new Directory("Conservatory");
                 public File conservatoryClue1 = new File("conservatoryClue1", "It didn't happen in the Lounge now leave me alone!");
                 public File conservatoryClue2 = new File("conservatoryClue2", "A murder using a candlestick? Can you imagine? Definitely not!");
+                public File conservatoryClue3 = new File("conservatoryClue3", "You found a red herring! This clue contains no evidence; use the `rm` command to delete it (e.g., `rm clueName`).");
             public Directory lounge = new Directory("Lounge");
-                public File loungeClue1 = new File("loungeClue1", "Mrs. White wouldn't hurt a fly! It most certainly wasn't her!");
+                public File loungeClue1 = new File("loungeClue1", "You found a red herring! This clue contains no evidence; use the `rm` command to delete it.");
                 public File loungeClue2 = new File("loungeClue2", "Don't know where it happened but it definitely wasn't in the conservatory!");
             public Directory ballroom = new Directory("Ballroom");
                 public File ballroomClue1 = new File("ballroomClue1", "It wasn't in the dining room! Couldn't have been!");
@@ -28,7 +31,7 @@ public class Clue {
                 public File diningClue2 = new File("diningClue2", "Ballroom's too clean for it to have happened in there!");
             public Directory library = new Directory("Library");
                 public File libraryClue1 = new File("libraryClue1", "Definitely didn't happen in the Kitchen!");
-                public File libraryClue2 = new File("libraryClue2", "All the plumbing seems to be intact so it couldn't have been the lead pipe!");
+                public File libraryClue2 = new File("libraryClue2", "All the plumbing seems to be intact, so it couldn't have been the lead pipe!");
             public Directory billiardRoom = new Directory("BilliardRoom");
                 public File billiardClue1 = new File("billiardClue1", "It most certainly couldn't have happened in the hall!");
                 public File billiardClue2 = new File("billiardClue2", "Seriously? Obviously the murder weapon wasn't the rope!");
@@ -42,12 +45,15 @@ public class Clue {
             rooms.addChild(kitchen);
                 kitchen.addChild(kitchenClue1);
                 kitchen.addChild(kitchenClue2);
+                kitchen.addChild(kitchenClue3);
             rooms.addChild(hall);
                 hall.addChild(hallClue1);
                 hall.addChild(hallClue2);
+                hall.addChild(hallClue3);
             rooms.addChild(conservatory);
                 conservatory.addChild(conservatoryClue1);
                 conservatory.addChild(conservatoryClue2);
+                conservatory.addChild(conservatoryClue3);
             rooms.addChild(lounge);
                 lounge.addChild(loungeClue1);
                 lounge.addChild(loungeClue2);
@@ -66,14 +72,11 @@ public class Clue {
     }
 
     public static void main(String[] args){
-        System.out.println("\nWelcome to Bash Detective: The Clue-Inspired Terminal Game!");
-        System.out.println("\nUse the cd, exit, grep, ls, mkdir, more, mv, pwd, and rm commands to " +
-        "investigate the clues hidden in each room and find out who dunnit, where they dunnit, and what they dunnit with! " + 
-        "Feel free to use the man command if you get stuck on how to properly use a command and need some help. Use the " +
-        "exit command when you're finished to exit the game.");
-        System.out.println("\nStart by creating a directory called 'Notebook' to store your clues.\n");
+        System.out.println("Welcome to Bash Detective: The Clue-Inspired Terminal Game!");
+        System.out.println("Use common terminal commands to " + "investigate the clues hidden in each room and find out who dunnit, where they dunnit, and what they dunnit with!");
+        System.out.println("\nStart by creating a directory called 'Notebook' to store your clues. Do this by typing 'mkdir Notebook'.\n");
         Clue clue = new Clue();
-        Terminal tr = new Terminal(clue.clue);
+        Terminal tr = new Terminal(clue.clue, "detective@Bash-Detective"); // Don't change this USER field or everything will break!!!
         tr.launch();
     }
 }

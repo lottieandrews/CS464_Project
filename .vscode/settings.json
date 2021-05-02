@@ -1,6 +1,7 @@
 {
     "java.project.sourcePaths": [
         "src/filesys",
-        "src/assessment"
+        "src/assessment",
+        "src/game"
     ]
 }

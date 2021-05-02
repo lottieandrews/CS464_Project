@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 public class Terminal extends FileNavigator {
     public final String USER;
-    public final Manual MANUAL = new Manual();
+    public final Manual MANUAL = new Manual(clueGame);
 
     public Terminal() {
         super();
@@ -17,9 +17,12 @@ public class Terminal extends FileNavigator {
         this.USER = "user@Bash-Terminal";
     }
 
-    public Terminal(String USER, Directory ROOT_DIR) {
+    public Terminal(Directory ROOT_DIR, String USER) {
         super(ROOT_DIR);
         this.USER = USER;
+        if (USER.equals("detective@Bash-Detective")) {
+            clueGame = true;
+        }
     }
 
     public void launch() {
@@ -42,60 +45,88 @@ public class Terminal extends FileNavigator {
 
     public void processUserInput(String in) {
         String[] args = in.trim().split(" ");
-        switch(args[0]) {
-            case "cd":
-                if (args.length == 1) { cd(); }
-                else if (args.length == 2) { cd(args[1]); }
-                else {
-                    printError("cd: extra operand `" + args[2] + "`", "cd");
-                }
-                break;
-            case "help":
-                    MANUAL.man();
-                break;
-            case "grep":
-                if (args.length > 3) {
-                    grep(String.join(" ", Arrays.copyOfRange(args, 1, args.length - 2)), args[args.length-1]);
-                }
-                else if (validateNumArgs(args, 3, "grep")) {
-                    grep(args[1], args[2]);
-                }
-                break;
-            case "ls":
-                if (args.length == 1) { ls(); }
-                else if (args.length == 2) { ls(args[1]); }
-                else {
-                    printError("ls: extra operand `" + args[2] + "`", "ls");
-                }
-                break;
-            case "man":
-                if (args.length == 1) { MANUAL.man(); }
-                else if (args.length == 2) { MANUAL.man(args[1]); }
-                break;
-            case "mkdir":
-                if (validateNumArgs(args, 2, "mkdir")) { mkdir(args[1]); }
-                break;
-            case "more":
-                if (validateNumArgs(args, 2, "more")) { more(args[1]); }
-                break;
-            case "mv":
-                if (validateNumArgs(args, 3, "mv")) { mv(args[1], args[2]); }
-                break;
-            case "pwd":
-                if (validateNumArgs(args, 1, "pwd")) { pwd(); }
-                break;
-            case "rm":
-                if (validateNumArgs(args, 2, "rm")) { rm(args[1]); }
-                break;
-            case "rmdir":
-                if (validateNumArgs(args, 2, "rmdir")) { rmdir(args[1]); }
-                break;
-            case "":
-            case "exit":
-                break;
-            default:
-                printError("Command not found: " + args[0], "man");
-                break;
+        if (clueGame && ROOT_DIR.getSubDir("Notebook") == null) {
+            if (!args[0].equals("mkdir")) {
+                System.out.println("You must create your Notebook before you can begin the game.");
+                System.out.println("Do this by typing 'mkdir Notebook'.");
+            } else if (!args[1].equals("Notebook")) {
+                System.out.println("Oops! Check your spelling. You're trying to make a directory called `Notebook`.");
+                System.out.println("Do this by typing 'mkdir Notebook'.");
+            }
+        } else {
+            switch (args[0]) {
+                case "cd":
+                    if (args.length == 1) {
+                        cd();
+                    } else if (args.length == 2) {
+                        cd(args[1]);
+                    } else {
+                        printError("cd: extra operand `" + args[2] + "`", "cd");
+                    }
+                    break;
+                case "help":
+                    System.out.println("Type `man` to access the manual.");
+                    break;
+                case "grep":
+                    if (args.length > 3) {
+                        grep(String.join(" ", Arrays.copyOfRange(args, 1, args.length - 2)), args[args.length - 1]);
+                    } else if (validateNumArgs(args, 3, "grep")) {
+                        grep(args[1], args[2]);
+                    }
+                    break;
+                case "ls":
+                    if (args.length == 1) {
+                        ls();
+                    } else if (args.length == 2) {
+                        ls(args[1]);
+                    } else {
+                        printError("ls: extra operand `" + args[2] + "`", "ls");
+                    }
+                    break;
+                case "man":
+                    if (args.length == 1) {
+                        MANUAL.man();
+                    } else if (args.length == 2) {
+                        MANUAL.man(args[1]);
+                    }
+                    break;
+                case "mkdir":
+                    if (validateNumArgs(args, 2, "mkdir")) {
+                        mkdir(args[1]);
+                    }
+                    break;
+                case "more":
+                    if (validateNumArgs(args, 2, "more")) {
+                        more(args[1]);
+                    }
+                    break;
+                case "mv":
+                    if (validateNumArgs(args, 3, "mv")) {
+                        mv(args[1], args[2]);
+                    }
+                    break;
+                case "pwd":
+                    if (validateNumArgs(args, 1, "pwd")) {
+                        pwd();
+                    }
+                    break;
+                case "rm":
+                    if (validateNumArgs(args, 2, "rm")) {
+                        rm(args[1]);
+                    }
+                    break;
+                case "rmdir":
+                    if (validateNumArgs(args, 2, "rmdir")) {
+                        rmdir(args[1]);
+                    }
+                    break;
+                case "":
+                case "exit":
+                    break;
+                default:
+                    printError("Command not found: `" + args[0] + "`", "man");
+                    break;
+            }
         }
     }
 
@@ -111,16 +142,6 @@ public class Terminal extends FileNavigator {
         else {
             printError(command + ": extra operand `" + args[validNum] + "`", command);
             return false;
-        }
-    }
-
-    private void printError(String errorMessage, String command) {
-        System.out.println(errorMessage);
-        if (command.equals("man")) {
-            System.out.println("Need help? Type `man` for more information.");
-        }
-        else {
-            System.out.println("Need help? Type `man " + command + "` for more information.");
         }
     }
 }
