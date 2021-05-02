@@ -34,8 +34,8 @@ public abstract class FileNavigator {
             }
         }
         if (dirName.equals("Rooms") && isFirstTime){
-            System.out.println("Good work! Now use the ls command to look at your options " +
-            "and the cd command again to choose which room you'd like to investigate first. ");
+            System.out.println("Good work! You can use the ls command to look at your options " +
+            "and the cd command to move from room to room. Try investigating the Ballroom first. ");
             isFirstTime = false;
         }
         if (dirName.equals("Ballroom") || dirName.equals("BilliardRoom") || dirName.equals("Conservatory") || dirName.equals("DiningRoom") || dirName.equals("Hall") || dirName.equals("Kitchen") || dirName.equals("Library") || dirName.equals("Lounge") || dirName.equals("Study")){
@@ -131,7 +131,7 @@ public abstract class FileNavigator {
     public void more(String fileName) {
         if (validateName(fileName, new String[]{"File"}) && !fileName.equals("CONFIDENTIAL")) {
             System.out.println(currentDir.getFile(fileName).getFileText());
-            System.out.println("\nYou found a clue! Use the mv command to rename the clue to something that's easier to remember (e.g., 'mv ballroomClue notDiningRoom') then type the command 'mv ~/Notebook' to move it to your Notebook for safe keeping.");
+            System.out.println("\nYou found a clue! Use the mv command to rename the clue to something that's easier to remember (e.g., 'mv ballroomClue notDiningRoom') then type the command 'mv ~/Notebook' to move it to your Notebook for safekeeping.");
         } else {
             System.out.println("Hey! No peeking!");
         }
@@ -196,6 +196,7 @@ public abstract class FileNavigator {
             else {
                 currentDir.remove(dirName);
                 rmdirCounter++;
+                moveCounter = 0;
                 if(rmdirCounter >= 9){
                     System.out.println("You've found all the clues! Use the 'cd ~' command to go back to your home directory, then navigate to your Notebook to sift through your notes and solve this murder!");
                 }
