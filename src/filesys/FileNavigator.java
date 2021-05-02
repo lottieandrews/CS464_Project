@@ -96,6 +96,7 @@ public abstract class FileNavigator {
                                     grepCounter++;
                                     break;
                                 default:
+                                    System.out.println("Hey! No peeking!");
                                     break;
                             }
                         }
