@@ -15,7 +15,7 @@ public class Manual {
                            "Command Input:\n" +
                            "man [COMMAND]\n" +
                            "\n" +
-                           "Use the `man` command followed by a command name to access information about that command.\n" +
+                           "Use the `man` command followed by a command name to access information about that command (e.g., `man pwd`).\n" +
                            "Supported commands: cd, exit, grep, ls, mkdir, more, mv, pwd, rm, rmdir\n");
     }
 
