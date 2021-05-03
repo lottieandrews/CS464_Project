@@ -15,8 +15,8 @@ The **`pwd`** (print working directory) command tells you where you are within a
 	> 
 	
 Use this command whenever you are unsure where you are located within the file system. In the terminal used in this tutorial, the `pwd` command used will show only the name of the folder you are currently located in. The rest of the file path will be hidden.
-### Command #1
-Type the **`pwd`** command to find out your current location within your filesystem. Whenever you are finished typing a command, press the Enter key to execute it. If you have completed the startup instructions correctly, you should be located inside of the `Start` folder. In this tutorial, the `Start` folder can be thought of as your home directory.
+### Task #1
+- Type the **`pwd`** command to find out your current location within your filesystem. Whenever you are finished typing a command, press the Enter key to execute it. If you have completed the startup instructions correctly, you should be located inside of the `Start` folder. In this tutorial, the `Start` folder can be thought of as your home directory.
 
 <br/>
 
@@ -31,25 +31,8 @@ The **`ls`** (list) command lists the names of all of the files and subfolders i
 	> 
 	
 In this tutorial, directories (folders) always begin with a capital letter, and text files always begin with a lowercase letter.
-### Command #2
-Type the **`ls`** command to see what is contained in the `Start` folder.
-
-<br/>
-
-You can also use the `ls` command followed by the name of a folder inside your current directory to view what is inside of that directory without changing your location within the file system.
-
-	> ls English
-	BookReports
-	Poetry
-	readingList
-	> pwd
-	/Users/guests/Documents
-	> 
-	
-As you can see from the example above, the user has viewed the contents of the `English` folder but is still located inside of the `Documents` folder.
-
-### Command #3
-Type the **`ls`** command followed by the name of a folder inside your current directory in order to view its contents.
+### Task #2
+- Type the **`ls`** command to see what is contained in the `Start` folder.
 
 <br/>
 
@@ -68,15 +51,22 @@ As shown below, typing `cd ..` will move you to the _parent_ of your current dir
 	/Users/guest/Documents
 	> 
 
-Typing only the `cd` command and hitting Enter will move you back to your home directory. Think of this command as your home button.
+Typing the `cd ~` command and hitting Enter will move you back to your home directory. Think of this command as your home button.
 
-	> cd
+	> cd ~
 	> pwd
 	/Users/guest
 	> 
 	
-### Command #4
-Use the **`cd`** command to move into the directory labelled `GoHere`. Then, using the commands you've learned so far, make sure you're in the right place and view the contents of the directory.
+### Task #3
+- Use the **`cd`** command to move into the directory labelled `GoHere`. 
+- Using the commands you've learned so far:
+	- Check to make sure you're in the right place
+	- View the contents of the directory.
+- Use the **`cd`** command again to move into the directory labelled `KeepGoing`. Check to make sure you're in the right place and view the contents of the directory.
+- See the directory labelled `EvenFurther`? You know the drill.
+- Great! There are no more directories in this file path. Use the variation of **`cd`** that takes you back to the previous directory. Check that it worked.
+- Instead of going back two more times, type use the variation of **`cd`** that takes you right back to your home directory. Check that it worked one last time.
 
 <br/>
 
@@ -95,8 +85,8 @@ The **`more`** command allows you to view the contents of a text file. Typing `m
 	apples, oranges.
 	> 
 	
-### Command #5
-Use the **`more`** command to view the contents of the file entitled `readMe`.
+### Task #4
+- Use the **`more`** command to view the contents of the file entitled `readMe`.
 
 <br/>
 
@@ -107,7 +97,7 @@ The **`grep`** command allows you to search a file to see if it contains a certa
 	apples, oranges.
 	> 
 	
-### Command #6
+### Task #5
 Use the **`grep`** command to search for the word `foobar` in the file `searchMe`. Then, use the commands you've learned so far to navigate back to your home directory. 
 
 <br/>
@@ -122,7 +112,7 @@ The **`mkdir`** command allows you to create new directories. In the example bel
 	myPoem
 	>
 	
-### Command #7
+### Task #6
 Use the **`mkdir`** command to create a directory called `NewFolder`. Then, using the commands you've learned so far, list the contents of your current directory to make sure your new folder was created.
 
 <br/>
@@ -139,7 +129,7 @@ The **`mv`** command has two functions: renaming files or directories and moving
 	
 When renaming files in particular, be careful not to choose the name of a file that already exists as your new filename. If you do, that file will be overwritten. The same doesn't apply to directories, as we will learn below.
 
-### Command #8
+### Task #7
 Use the **`mv`** command to change the name of the file `renameMe` to `moveMe`. Then, list the contents of your current directory to make sure you exectued the command correctly.
 
 <br/>
@@ -151,7 +141,7 @@ The second function of the `mv` command is to move a file or directory into a di
 	myHaiku
 	>
 	
-### Command #9
+### Task #8
 Use the **`mv`** command to move the file `moveMe` into `NewFolder`. Without navigating there, list the contents of `NewFolder` to be sure it worked.
 
 <br/>
@@ -166,7 +156,7 @@ The **`rm`** command is used to delete files. In the example below, the user nav
 	> ls
 	> 
 
-### Command #10
+### Task #9
 Using the commands you've learned so far, navigate to the directory DeleteMe and list its contents. You should see a file named `removeMe`. Use the **`rm`** command to delete it. List the contents of your current directory to verify that it is empty.
 
 <br/>
@@ -183,7 +173,7 @@ The **`rmdir`** command is used to delete empty directories. If the directory yo
 	Haikus
 	>
 
-### Command #11
+### Task #10
 Using the commands you've learned so far, navigate back to your home directory. Then, use the **`rmdir`** command to delete the directory `DeleteMe`. Finally, list the contents of your current directory to verify that `DeleteMe` no longer exists.
 
 <br/>
