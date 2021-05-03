@@ -26,11 +26,10 @@ public class Manual {
                                    "CD: CHANGE DIRECTORY\n" +
                                    "\n" +
                                    "Command Input:\n" +
-                                   "cd\n" +
                                    "cd [DIRECTORY]\n" +
                                    "\n" +
                                    "Move from one directory location to another.\n" +
-                                   "Type `cd` to return to the home directory.\n" +
+                                   "Type `cd ~` to return to the home directory.\n" +
                                    "Type `cd ..` to return to the parent of the current directory.\n" +
                                    "Type `cd` followed by the name of any directory inside of the current directory to move there.\n");
                 break;
@@ -64,11 +63,8 @@ public class Manual {
                                    "\n" +
                                    "Command Input:\n" +
                                    "ls\n" +
-                                   "ls [DIRECTORY]\n" +
                                    "\n" +
-                                   "Type `ls` to list the contents of the current directory.\n" +
-                                   "Type `ls` followed by the name of a directory to list the contents of that directory.\n" +
-                                   "Type `ls ..` to list the contents of the parent directory.\n");
+                                   "Type `ls` to list the contents of the current directory.");
                 break;
             case "man":
                 man();
