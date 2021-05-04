@@ -1,12 +1,5 @@
 # Command Line Tutorial
 
-## What is the command line?
-[An overview to what this tutorial is about]
-
-## How to access the command line
-[Tutorial setup instructions]
-
-## Tutorial
 ### `pwd`
 The **`pwd`** (print working directory) command tells you where you are within a file system. In the example below, `/Users/guest` refers to the user's _home directory_. The user is currently located in the `Documents` folder.
 
