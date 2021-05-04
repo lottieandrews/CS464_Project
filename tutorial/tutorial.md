@@ -1,5 +1,7 @@
 # Command Line Tutorial
 
+The command line is a powerful tool that allows you to control your computer using only the keyboard. In this tutorial, you will learn several different commands that you can use to navigate your computer's file system. 
+
 ### `pwd`
 The **`pwd`** (print working directory) command tells you where you are within a file system. In the example below, `/Users/guest` refers to the user's _home directory_. The user is currently located in the `Documents` folder.
 
