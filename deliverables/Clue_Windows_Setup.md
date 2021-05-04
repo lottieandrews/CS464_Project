@@ -1,4 +1,4 @@
-# Windows Setup Instructions: Learning Option A
+# Setup Instructions: Learning Option A
 
 For your assigned learning option, you will be playing a text adventure game in the command line and learning terminal commands as you go along.
 
