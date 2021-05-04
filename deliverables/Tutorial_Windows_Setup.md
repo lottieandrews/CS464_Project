@@ -1,4 +1,4 @@
-# Windows Setup Instructions: Learning Option B
+# Setup Instructions: Learning Option B
 
 For your assigned learning option, you will follow along with a written tutorial and practice several basic terminal commands.
 
