@@ -1,6 +1,6 @@
 # Setup Instructions: Learning Option A
 
-For your assigned learning option, you will be playing a text adventure game in the command line and learning terminal commands as you go along.
+For your assigned learning option, you will be playing a text adventure game in the command line and learning terminal commands as you go along. Please read through these instructions completely before you begin.
 
 1. Right-click the `Clue.jar` file, then click **Properties** > **Open With** > **Other Application** > **Terminal**. Depending on the flavor of Linux you're using, you may be able to do this in fewer clicks.
 2. Once you have the terminal open, copy and paste the following line of code and hit Enter:
