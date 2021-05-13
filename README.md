@@ -16,6 +16,9 @@ Our only deliverable will be a link one of two webpages. The webpages will conta
 ## End Goals
 By the end of this project, we hope to have a jar executable file that runs a text adventure game aimed at teaching the user how to use basic terminal commands. The user will have an introduction to the commands and be launched into a step-by-step text adventure in which they will have to solve the murder mystery by finding clues located in different files that must be accessed by using the correct terminal commands. We hope to create an engaging and effective learning tool that can aid in the users’ understanding of how to use terminal commands and gain confidence in their new skills.  
 
+## Videos
+[Project Video](https://www.youtube.com/watch?v=-POu66aiw5I)
+
 ## Resources
 Conrad, Shawn, Michaela LaVan, Michele Pratusevich, Emma Tolley, and David Zou. (2011). Terminus: A Text Adventure Game To Promote Learning About Terminal Command Line Interfaces. 11.127/252/CMS.590.   web.mit.edu/mprat/Public/web/Terminus/Java/CMS.590Game2FinalReport.pdf. 
 
